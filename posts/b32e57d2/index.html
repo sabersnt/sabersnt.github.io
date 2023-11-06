@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/saber-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/saber-16x16.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha256-CTSx/A06dm1B063156EVh15m6Y67pAjZZaQc89LLSrU=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.18.2","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"在这里输入你要搜索的内容","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="快速排序、归并排序、二分算法、高精度运算、前缀和、差分算法、双指针算法、位运算、离散化、区间合并、回溯算法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基础算法">
+<meta property="og:url" content="http://example.com/posts/b32e57d2/index.html">
+<meta property="og:site_name" content="Alcatraz Island">
+<meta property="og:description" content="快速排序、归并排序、二分算法、高精度运算、前缀和、差分算法、双指针算法、位运算、离散化、区间合并、回溯算法">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/images/%E4%BA%8C%E7%BB%B4%E5%89%8D%E7%BC%80%E5%92%8C.png">
+<meta property="og:image" content="http://example.com/images/%E5%B7%AE%E5%88%86%E7%9F%A9%E9%98%B5.png">
+<meta property="article:published_time" content="2023-11-05T10:15:53.104Z">
+<meta property="article:modified_time" content="2023-11-05T14:36:48.488Z">
+<meta property="article:author" content="subersnt">
+<meta property="article:tag" content="基础算法">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/images/%E4%BA%8C%E7%BB%B4%E5%89%8D%E7%BC%80%E5%92%8C.png">
+
+
+<link rel="canonical" href="http://example.com/posts/b32e57d2/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/posts/b32e57d2/","path":"posts/b32e57d2/","title":"基础算法"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>基础算法 | Alcatraz Island</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Alcatraz Island</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="在这里输入你要搜索的内容" spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F"><span class="nav-text">快速排序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F"><span class="nav-text">归并排序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8C%E5%88%86%E7%AE%97%E6%B3%95"><span class="nav-text">二分算法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%95%B4%E6%95%B0%E4%BA%8C%E5%88%86"><span class="nav-text">整数二分</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%B5%AE%E7%82%B9%E6%95%B0%E4%BA%8C%E5%88%86"><span class="nav-text">浮点数二分</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%AB%98%E7%B2%BE%E5%BA%A6%E8%BF%90%E7%AE%97"><span class="nav-text">高精度运算</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%AB%98%E7%B2%BE%E5%BA%A6%E5%8A%A0%E6%B3%95"><span class="nav-text">高精度加法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%AB%98%E7%B2%BE%E5%BA%A6%E5%87%8F%E6%B3%95"><span class="nav-text">高精度减法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%AB%98%E7%B2%BE%E5%BA%A6%E4%B9%98%E6%B3%95"><span class="nav-text">高精度乘法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%AB%98%E7%B2%BE%E5%BA%A6%E9%99%A4%E6%B3%95"><span class="nav-text">高精度除法</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%89%8D%E7%BC%80%E5%92%8C"><span class="nav-text">前缀和</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%B8%80%E7%BB%B4%E6%95%B0%E7%BB%84"><span class="nav-text">一维数组</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84-%E7%9F%A9%E9%98%B5"><span class="nav-text">二维数组 (矩阵)</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B7%AE%E5%88%86%E7%AE%97%E6%B3%95"><span class="nav-text">差分算法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%B8%80%E7%BB%B4%E6%95%B0%E7%BB%84%E5%B7%AE%E5%88%86"><span class="nav-text">一维数组差分</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%E5%B7%AE%E5%88%86"><span class="nav-text">二维数组差分</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%8C%E6%8C%87%E9%92%88%E7%AE%97%E6%B3%95"><span class="nav-text">双指针算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%8D%E8%BF%90%E7%AE%97"><span class="nav-text">位运算</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#x%E5%9C%A8%E4%BA%8C%E8%BF%9B%E5%88%B6%E4%B8%AD%E7%9A%84%E7%AC%ACk%E4%BD%8D%E6%95%B0"><span class="nav-text">x在二进制中的第k位数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#lowbit"><span class="nav-text">lowbit</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%8F%AA%E5%87%BA%E7%8E%B0%E4%B8%80%E6%AC%A1%E7%9A%84%E6%95%B0%E5%AD%97"><span class="nav-text">只出现一次的数字</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%8F%AA%E5%87%BA%E7%8E%B0%E4%B8%80%E6%AC%A1%E7%9A%84%E6%95%B0%E5%AD%97ii"><span class="nav-text">只出现一次的数字II</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A6%BB%E6%95%A3%E5%8C%96"><span class="nav-text">离散化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8C%BA%E9%97%B4%E5%90%88%E5%B9%B6"><span class="nav-text">区间合并</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95"><span class="nav-text">回溯算法</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="subersnt"
+      src="/images/ygyt.png">
+  <p class="site-author-name" itemprop="name">subersnt</p>
+  <div class="site-description" itemprop="description">莫听穿林打叶声，何妨吟啸且徐行</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="返回顶部">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/posts/b32e57d2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/ygyt.png">
+      <meta itemprop="name" content="subersnt">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Alcatraz Island">
+      <meta itemprop="description" content="莫听穿林打叶声，何妨吟啸且徐行">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="基础算法 | Alcatraz Island">
+      <meta itemprop="description" content="快速排序、归并排序、二分算法、高精度运算、前缀和、差分算法、双指针算法、位运算、离散化、区间合并、回溯算法">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          基础算法
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2023-11-05 18:15:53 / 修改时间：22:36:48" itemprop="dateCreated datePublished" datetime="2023-11-05T18:15:53+08:00">2023-11-05</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">数据结构与算法</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">快速排序、归并排序、二分算法、高精度运算、前缀和、差分算法、双指针算法、位运算、离散化、区间合并、回溯算法</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h4 id="快速排序">快速排序</h4>
+<p><strong>时间复杂度</strong></p>
+<ul>
+<li><span class="math inline">\(O(n\log n)\ —\ O(n^2)\)</span></li>
+</ul>
+<ol type="1">
+<li>确定分界点：找到将数组分为两半的值</li>
+<li>利用两个指针进行排序：使左指针左边的数全都小于分界值；右指针右边的数全都大于分界值</li>
+<li>递归调用：重新对原数组分成的子数组进行快速排序 <span id="more"></span>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//template code</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">quick_sort</span><span class="params">(<span class="type">int</span> q[],<span class="type">int</span> l,<span class="type">int</span> r)</span>	<span class="comment">//注意l和r都为数组的下标 一般l为0，r为 (数组长度-1)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>( l&gt;=r ) <span class="keyword">return</span>;		<span class="comment">//若数组中只有一个元素，则无需排序</span></span><br><span class="line">    <span class="type">int</span> p = q[(l+r) &gt;&gt; <span class="number">1</span>],i = l - <span class="number">1</span>,j = r + <span class="number">1</span>;	<span class="comment">//取数组中间的值作为基准值</span></span><br><span class="line">    <span class="keyword">while</span>(i&lt;j)</span><br><span class="line">    &#123;  </span><br><span class="line">        <span class="keyword">do</span> i++; <span class="keyword">while</span>(q[i]&lt;p);</span><br><span class="line">        <span class="keyword">do</span> j--; <span class="keyword">while</span>(q[j]&gt;p);</span><br><span class="line">        <span class="keyword">if</span>(i&lt;j) <span class="built_in">swap</span>(q[i],q[j]);</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;hallo world&quot;</span> &lt;&lt; endl;</span><br><span class="line">    <span class="built_in">quick_sort</span>(q,l,j);</span><br><span class="line">    <span class="built_in">quick_sort</span>(q,j+<span class="number">1</span>,r);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h4 id="归并排序">归并排序</h4>
+<p><strong>时间复杂度</strong></p>
+<ul>
+<li><span class="math inline">\(O(n\log n)\)</span></li>
+</ul>
+<ol type="1">
+<li>确定分界点：找到将数组分为两半的下标</li>
+<li>递归调用：对分成的两个数组进行排序</li>
+<li>比较元素：迭代比较两个数组的每个元素，将较小的放入临时数组中，若相等则指定选一个放</li>
+<li>收集元素：两个数组中剩下的元素插入到临时数组中</li>
+<li>收集元素：将临时数组中的元素插入到目标数组中</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//template code</span></span><br><span class="line"><span class="type">int</span> q[N],temp[N];</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">merge_sort</span><span class="params">(<span class="type">int</span> q[],<span class="type">int</span> l,<span class="type">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(l&gt;=r) <span class="keyword">return</span>;	<span class="comment">//若数组中只有一个元素，则无需排序</span></span><br><span class="line">    <span class="type">int</span> mid = l+r &gt;&gt; <span class="number">1</span>, i = l, k = <span class="number">0</span>;	</span><br><span class="line">    <span class="type">int</span> j = mid + <span class="number">1</span>;</span><br><span class="line">    <span class="built_in">merge_sort</span>(q,l,mid);	<span class="comment">//对两段数组进行递归调用</span></span><br><span class="line">    <span class="built_in">merge_sort</span>(q,mid+<span class="number">1</span>,r);</span><br><span class="line">    <span class="keyword">while</span>(i&lt;=mid &amp;&amp; j &lt;= r)		<span class="comment">//两个数组的元素逐一进行比较，将较小的放置临时的数组中</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(q[i]&lt;=q[j]) temp[k++] = q[i++];</span><br><span class="line">        <span class="keyword">else</span> temp[k++] = q[j++];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(i&lt;=mid) temp[k++] = q[i++];<span class="comment">//指针指到末尾，可能另一个指针没有走到，需要将剩余元素添加</span></span><br><span class="line">    <span class="keyword">while</span>(j&lt;=r) temp[k++] = q[j++];	 <span class="comment">//到临时数组中</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = l, j = <span class="number">0</span>; i &lt;= r; i++, j++) q[i] = tmp[j];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="二分算法">二分算法</h4>
+<p><strong>本质</strong></p>
+<ul>
+<li>求边界点：每次将区间一分为二，当区间长度等于1时，即为边界点</li>
+</ul>
+<p><strong>核心</strong></p>
+<ul>
+<li>确定一个逻辑，使其可以将整个区间一分为二，一段满足该逻辑的，另一段则不满足该逻辑</li>
+</ul>
+<h5 id="整数二分">整数二分</h5>
+<p><strong>分类</strong></p>
+<ol type="1">
+<li>在满足逻辑区间内求左端点：取中间值时需要+1</li>
+<li>在满足逻辑区间内求右端点：取中间值时不需要+1</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//整数二分 template code</span></span><br><span class="line"><span class="comment">//case1：求check(mid)为true区间的的左边界</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">bsearch_1</span><span class="params">(<span class="type">int</span> l, <span class="type">int</span> r)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">while</span>(l &lt; r)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">mid</span> <span class="operator">=</span> l + r &gt;&gt; <span class="number">1</span>;	<span class="comment">//先取中间值</span></span><br><span class="line">        <span class="keyword">if</span>(check(mid)) r = mid;	<span class="comment">//check(mid)为判断逻辑，若为true，则r=mid(减半区间)</span></span><br><span class="line">        <span class="keyword">else</span> l = mid + <span class="number">1</span>;	<span class="comment">//若不满足逻辑，则目标值一定在mid的下一个位置之后</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> l;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//case2：求check(mid)为true区间的的右边界</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">bsearch_2</span><span class="params">(<span class="type">int</span> l, <span class="type">int</span> r)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">while</span>(l &lt; r)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">mid</span> <span class="operator">=</span> l + r + <span class="number">1</span> &gt;&gt; <span class="number">1</span>;	<span class="comment">//先取中间值, 特别注意：取中间值的时候需要加1</span></span><br><span class="line">        <span class="keyword">if</span>(chech(mid)) l = mid;	<span class="comment">//check(mid)为判断逻辑，若为true，则l=mid(减半区间)</span></span><br><span class="line">        <span class="keyword">else</span> r = mid - <span class="number">1</span>;	<span class="comment">//若不满足逻辑，则目标值一定在mid的前一个位置之前</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> l;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>注意事项</strong></p>
+<ul>
+<li>有些题目中 l + r 会爆int，所以可以改为 int mid = l + (r - l &gt;&gt;
+1), 这样就不会爆</li>
+</ul>
+<h5 id="浮点数二分">浮点数二分</h5>
+<p><strong>特性</strong></p>
+<ul>
+<li>有确定的中间值，无需像整数二分一样考虑边界问题</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//template code</span></span><br><span class="line">bool <span class="title function_">check</span><span class="params">(<span class="type">double</span> x)</span> &#123;<span class="comment">/* ... */</span>&#125; <span class="comment">// 检查x是否满足某种性质</span></span><br><span class="line"></span><br><span class="line"><span class="type">double</span> <span class="title function_">bsearch_3</span><span class="params">(<span class="type">double</span> l, <span class="type">double</span> r)</span></span><br><span class="line">&#123;</span><br><span class="line">    const <span class="type">double</span> <span class="variable">eps</span> <span class="operator">=</span> <span class="number">1e-6</span>;   <span class="comment">// eps 表示精度，取决于题目对精度的要求 一般为精度的1/100</span></span><br><span class="line">    <span class="keyword">while</span> (r - l &gt; eps)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">double</span> <span class="variable">mid</span> <span class="operator">=</span> (l + r) / <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">if</span> (check(mid)) r = mid;</span><br><span class="line">        <span class="keyword">else</span> l = mid;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> l;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//例题：给定一个浮点数 n求它的三次方根 -10000 &lt; n &lt; 10000</span></span><br><span class="line"><span class="type">double</span> n;</span><br><span class="line">cin &gt;&gt; n;</span><br><span class="line"><span class="type">double</span> <span class="variable">l</span> <span class="operator">=</span> -<span class="number">10000</span>, r = <span class="number">10000</span>;</span><br><span class="line"><span class="keyword">while</span>((r-l) &gt;= <span class="number">1e-8</span>)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">double</span> <span class="variable">mid</span> <span class="operator">=</span> (r + l) / <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">if</span>(mid*mid*mid &gt;= n) r = mid;	<span class="comment">//ture则从mid之前找目标值</span></span><br><span class="line">    <span class="keyword">else</span> l = mid;</span><br><span class="line">&#125;</span><br><span class="line">printf(<span class="string">&quot;%lf&quot;</span>,l);		<span class="comment">//l即为最终答案</span></span><br></pre></td></tr></table></figure>
+<h4 id="高精度运算">高精度运算</h4>
+<h5 id="高精度加法">高精度加法</h5>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//template code</span></span><br><span class="line"><span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">add</span><span class="params">(vector&lt;<span class="type">int</span>&gt; &amp;A, vector&lt;<span class="type">int</span>&gt; &amp;B)</span>	<span class="comment">//vector容器中从低位到高位存储数据</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> t = <span class="number">0</span>;		<span class="comment">//用来表示进位与否</span></span><br><span class="line">    vector&lt;<span class="type">int</span>&gt; C;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; A.<span class="built_in">size</span>() || i &lt; B.<span class="built_in">size</span>(); i++)	<span class="comment">//模拟现实中的加法过程</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(i &lt; A.<span class="built_in">size</span>()) t += A[i];		<span class="comment">//t相当于每个位上的临时结果</span></span><br><span class="line">        <span class="keyword">if</span>(i &lt; B.<span class="built_in">size</span>()) t += B[i];		<span class="comment">//某一位上B或A没有数，相当于为0 </span></span><br><span class="line">        C.<span class="built_in">push_back</span>(t % <span class="number">10</span>);	<span class="comment">//将结果t取余插入新的容器中</span></span><br><span class="line">        t /= <span class="number">10</span>;	<span class="comment">//更新t，向0取整，结果没有小数，t的最大值为9</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(t) C.<span class="built_in">push_back</span>(t);</span><br><span class="line">    <span class="keyword">return</span> C;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="高精度减法">高精度减法</h5>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//template code</span></span><br><span class="line"><span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">sub</span><span class="params">(<span class="type">const</span> vector&lt;<span class="type">int</span>&gt; A, <span class="type">const</span> vector&lt;<span class="type">int</span>&gt; B)</span></span></span><br><span class="line"><span class="function"></span>&#123;	<span class="comment">//使用前提：A一定要大于B</span></span><br><span class="line">    vector&lt;<span class="type">int</span>&gt; C;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>, t = <span class="number">0</span>; i &lt; A.<span class="built_in">size</span>(); i++)	<span class="comment">//模拟现实中减法的运算</span></span><br><span class="line">    &#123;	<span class="comment">//t相等于临时结果</span></span><br><span class="line">        <span class="keyword">if</span>(i &lt; A.<span class="built_in">size</span>()) t = A[i] - t;	<span class="comment">//t相等于借1与否			</span></span><br><span class="line">        <span class="keyword">if</span>(i &lt; B.<span class="built_in">size</span>()) t -= B[i];		<span class="comment">//t = t - B[i]		</span></span><br><span class="line">        C.<span class="built_in">push_back</span>((t + <span class="number">10</span>) % <span class="number">10</span>);	<span class="comment">//两种情况合并到一起</span></span><br><span class="line">        <span class="keyword">if</span>(t &gt;= <span class="number">0</span>) t = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">else</span> t = <span class="number">1</span>; </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(C.<span class="built_in">size</span>() &gt; <span class="number">1</span> &amp;&amp; C.<span class="built_in">back</span>() == <span class="number">0</span>) C.<span class="built_in">pop_back</span>();		<span class="comment">//去除前导零</span></span><br><span class="line">    <span class="keyword">return</span> C;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//用于比较两个数的大小，关注一下比较的逻辑</span></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">com</span><span class="params">(<span class="type">const</span> vector&lt;<span class="type">int</span>&gt; A, <span class="type">const</span> vector&lt;<span class="type">int</span>&gt; B)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (A.<span class="built_in">size</span>() != B.<span class="built_in">size</span>()) <span class="keyword">return</span> A.<span class="built_in">size</span>() &gt; B.<span class="built_in">size</span>();	<span class="comment">//长度不等直接比</span></span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = A.<span class="built_in">size</span>() - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--)</span><br><span class="line">            <span class="keyword">if</span>(A[i] != B[i])	<span class="comment">//长度相等，从最高位开始比较，直到位上的数有差异</span></span><br><span class="line">                <span class="keyword">return</span> A[i] &gt; B[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="高精度乘法">高精度乘法</h5>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//template code		和加法模板相似</span></span><br><span class="line"><span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">mul</span><span class="params">(<span class="type">const</span> vector&lt;<span class="type">int</span>&gt; &amp;A, <span class="type">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;				<span class="comment">//和实际中的乘法不一样，将大的数的每一位直接与较小的数相乘，而不是较小数的每一位</span></span><br><span class="line">    vector&lt;<span class="type">int</span>&gt; C;</span><br><span class="line">    <span class="type">int</span> t = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; A.<span class="built_in">size</span>() || t; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(i &lt; A.<span class="built_in">size</span>()) t = A[i] * b + t;</span><br><span class="line">        C.<span class="built_in">push_back</span>(t % <span class="number">10</span>);	<span class="comment">// ‘%’表示最终结果</span></span><br><span class="line">        t /= <span class="number">10</span>;		<span class="comment">// ‘/’表示进位 </span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/*	非 ‘||t’ 的写法</span></span><br><span class="line"><span class="comment">    	while(t)</span></span><br><span class="line"><span class="comment">    	&#123;</span></span><br><span class="line"><span class="comment">    		C.push_back(t % 10);</span></span><br><span class="line"><span class="comment">    		t /= 10;</span></span><br><span class="line"><span class="comment">    	&#125;</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="keyword">while</span>(C.<span class="built_in">size</span>() &gt; <span class="number">1</span> &amp;&amp; C.<span class="built_in">back</span>() == <span class="number">0</span>) C.<span class="built_in">pop_back</span>();	<span class="comment">//去前导零</span></span><br><span class="line">    <span class="keyword">return</span> C;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="高精度除法">高精度除法</h5>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//template code		和乘法相似</span></span><br><span class="line"><span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">div</span><span class="params">(vector&lt;<span class="type">int</span>&gt; A, <span class="type">int</span> b, <span class="type">int</span> &amp;r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    vector&lt;<span class="type">int</span>&gt; C;</span><br><span class="line">    r= <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i  = A.<span class="built_in">size</span>() <span class="number">-1</span>; i &gt;= <span class="number">0</span>; i--) <span class="comment">//因为除法从高位开始算，所以i从size - 1开始</span></span><br><span class="line">    &#123;</span><br><span class="line">        r = A[i] + r * <span class="number">10</span>;		<span class="comment">//处理高位留下来的数字，需要乘上10</span></span><br><span class="line">        C.<span class="built_in">push_back</span>(r / b);		<span class="comment">//注意这里 插入的是r / b 因为是除法</span></span><br><span class="line">        r %= b;					<span class="comment">//高位剩下的为 r % b</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">reverse</span>(C.<span class="built_in">begin</span>(), C.<span class="built_in">end</span>());	<span class="comment">//结果需要翻转（如果打印从数组末尾开始打印）</span></span><br><span class="line">    <span class="keyword">while</span>(C.<span class="built_in">size</span>() &gt; <span class="number">1</span> &amp;&amp; C.<span class="built_in">back</span>() == <span class="number">0</span>) C.<span class="built_in">pop_back</span>();  </span><br><span class="line">    <span class="keyword">return</span> C;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="前缀和">前缀和</h4>
+<h5 id="一维数组">一维数组</h5>
+<ul>
+<li>利用递推公式求an an = sn - sn-1</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;		<span class="comment">//a[]数组则代表着数列	s[]数组表示an的前n项和数列</span></span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>, &amp;n, &amp;m);	<span class="comment">//注意：前缀和一般从1开始，方便处理边界</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++) <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;a[i]);</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++) s[i] = s[i<span class="number">-1</span>] + a[i];	<span class="comment">//求前缀和的公式：利用an与sn的关系</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; m; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> l, r;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>, &amp;l, &amp;r);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,s[r] - s[l - <span class="number">1</span>]);		<span class="comment">//利用an与sn的关系</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h5 id="二维数组-矩阵">二维数组 (矩阵)</h5>
+<ul>
+<li>求子矩阵的和：一维数组的公式推广至二维</li>
+<li>an 与 sn 的关系：a[i][j] = s[i-1][j] + s[i][j-1] - s[i-1][j-1] +
+a[i][j]</li>
+<li>求子矩阵公式：左上顶点坐标 (x1, y1) 右下顶点坐标 (x2, y2)
+<ul>
+<li>S[x2, y2] - S[x1-1, y2] - S[x2, y1-1] + S[x1-1, y1-1]</li>
+</ul></li>
+</ul>
+<p><img src="/images/二维前缀和.png" /></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d%d%d&quot;</span>, &amp;n, &amp;m, &amp;q);</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++)		<span class="comment">//读取an</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">1</span>; j &lt;= m; j++)</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;a[i][j]);		<span class="comment">//注意：前缀和一般从1开始，方便处理边界</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++)		<span class="comment">//利用an与sn的关系求sn</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">1</span>; j &lt;= m; j++)</span><br><span class="line">            <span class="comment">//求(1, 1)到(i, j)的矩阵的前缀和公式	想不明白就画图 —— 分成两部分相加</span></span><br><span class="line">            s[i][j] = s[i][j<span class="number">-1</span>] + s[i<span class="number">-1</span>][j] + a[i][j] - s[i<span class="number">-1</span>][j<span class="number">-1</span>];</span><br><span class="line">            </span><br><span class="line">    <span class="keyword">while</span>(q--)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> x1, y1, x2, y2;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d%d%d%d&quot;</span>, &amp;x1, &amp;y1, &amp;x2, &amp;y2);</span><br><span class="line">        <span class="comment">//求(x1, y1)到(x2, y2)矩阵的前缀和公式 想不明白就画图</span></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, s[x2][y2] - s[x2][y1<span class="number">-1</span>] - s[x1<span class="number">-1</span>][y2] + s[x1<span class="number">-1</span>][y1<span class="number">-1</span>]);</span><br><span class="line">    &#125;</span><br><span class="line">       </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="差分算法">差分算法</h4>
+<p><strong>定义</strong></p>
+<ul>
+<li>差分本质上是前缀和的逆运算 若 bn 的前缀和等于 an 则称 bn 为 an
+的差分</li>
+</ul>
+<p><strong>使用场景</strong></p>
+<ul>
+<li>当需要将给定数组an中的一段区间 [l , r] 的每一个元素都加上一个数 v
+时，可以将时间复杂度从 o(n) 降至 o(1)
+<ul>
+<li>当b[l] + v 时，a[l] 及之后的元素都会加上一个v</li>
+<li>当b[r+1] - v 时，a[r + 1]及之后的每个元素都会减上一个v</li>
+<li>因此只需要同时满足 b[l] + v 和 b[r+1] - v
+即能使原数组an指定区间的每个元素都加上指定值</li>
+</ul></li>
+</ul>
+<p><strong>构造差分数组</strong></p>
+<ul>
+<li>假设数组a中的每个元素都是0，则数组b中的每个元素也是0</li>
+<li>若a的某个位置有元素，相当于在该位置加上了一个数组：例如，a[2] = 11
+等价于 b[2] += a[2]，b[2 + 1] -= a[2]</li>
+<li>因此无需刻意构造差分数组，了解这个思想就行</li>
+</ul>
+<h5 id="一维数组差分">一维数组差分</h5>
+<p><strong>核心代码</strong></p>
+<ul>
+<li>b[l] += v , b[r+1] -= v</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">1e5</span> + <span class="number">10</span>;</span><br><span class="line"><span class="type">int</span> a[N], b[N];</span><br><span class="line"><span class="type">int</span> n, m;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">insert</span><span class="params">(<span class="type">int</span> l, <span class="type">int</span> r, <span class="type">int</span> v)</span>	<span class="comment">//核心code</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    b[l] += v;</span><br><span class="line">    b[r + <span class="number">1</span>] -= v;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>, &amp;n, &amp;m);</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++) <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;a[i]);</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++) <span class="built_in">insert</span>(i, i, a[i]);		<span class="comment">//构造差分数组</span></span><br><span class="line">    <span class="keyword">while</span>(m--)</span><br><span class="line">    &#123;	<span class="comment">//插入过程</span></span><br><span class="line">        <span class="type">int</span> l, r, v;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d%d%d&quot;</span>, &amp;l, &amp;r, &amp;v);</span><br><span class="line">        <span class="built_in">insert</span>(l, r, v);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//将差分数组转换成原数组，利用差分数组的前n项和等于原数组第n项</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++) b[i] += b[i<span class="number">-1</span>];		</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++) <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>, b[i]);</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="二维数组差分">二维数组差分</h5>
+<p><strong>核心代码</strong></p>
+<ul>
+<li>给以(x1, y1)为左上角，(x2, y2)为右下角的子矩阵中的所有元素加上c
+<ul>
+<li>S[x1, y1] += c, S[x2+1, y1] -= c, S[x1, y2+1] -= c, S[x2+1, y2+1] +=
+c</li>
+</ul></li>
+</ul>
+<p><strong>图解注释</strong></p>
+<p><img src="/images/差分矩阵.png" /></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">1010</span>;</span><br><span class="line"><span class="type">int</span> n, m, q;</span><br><span class="line"><span class="type">int</span> a[N][N], b[N][N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">insert</span><span class="params">(<span class="type">int</span> x1, <span class="type">int</span> y1, <span class="type">int</span> x2, <span class="type">int</span> y2, <span class="type">int</span> v)</span></span></span><br><span class="line"><span class="function"></span>&#123;	<span class="comment">//想不明白的时候就画张图</span></span><br><span class="line">    b[x1][y1] += v;</span><br><span class="line">    b[x2+<span class="number">1</span>][y1] -= v;</span><br><span class="line">    b[x1][y2+<span class="number">1</span>] -= v;</span><br><span class="line">    b[x2 + <span class="number">1</span>][y2 + <span class="number">1</span>] += v;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d%d%d&quot;</span>, &amp;n, &amp;m, &amp;q);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">1</span>; j &lt;= m; j++)</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;a[i][j]);		<span class="comment">//读取原数组</span></span><br><span class="line">            </span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">1</span>; j &lt;= m; j++)</span><br><span class="line">            <span class="built_in">insert</span>(i, j, i, j, a[i][j]);	<span class="comment">//构造差分数组</span></span><br><span class="line">            </span><br><span class="line">    <span class="keyword">while</span>(q--)</span><br><span class="line">    &#123;	<span class="comment">//插入过程</span></span><br><span class="line">        <span class="type">int</span> x1, y1, x2, y2, v;</span><br><span class="line">        cin &gt;&gt; x1 &gt;&gt; y1 &gt;&gt; x2 &gt;&gt; y2 &gt;&gt; v;</span><br><span class="line">        <span class="built_in">insert</span>(x1, y1, x2, y2, v);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">1</span>; j &lt;= m; j++)</span><br><span class="line">            <span class="comment">//求前缀和的模板</span></span><br><span class="line">            b[i][j] = b[i<span class="number">-1</span>][j] + b[i][j<span class="number">-1</span>] - b[i<span class="number">-1</span>][j<span class="number">-1</span>] + b[i][j]; </span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">1</span>; j &lt;= m; j++)</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>, b[i][j]);</span><br><span class="line">        cout &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="双指针算法">双指针算法</h4>
+<p><strong>模板</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>, j = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">    <span class="keyword">while</span>(j &lt;= i &amp;&amp; <span class="built_in">check</span>(j, i)) j++;	<span class="comment">//check()为判定条件</span></span><br></pre></td></tr></table></figure>
+<p><strong>优点</strong></p>
+<ul>
+<li>将需要两个for循环 转成一个for循环</li>
+<li>时间复杂度由 n方 优化成 n</li>
+</ul>
+<p><strong>本质</strong></p>
+<ul>
+<li>一个指针 i 用于遍历数组的每个元素，另一个指针 j 用于遍历指针 i
+之前的数据</li>
+</ul>
+<p><strong>例题</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//求最长连续不重复子序列的长度</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">1e5</span> + <span class="number">10</span>;</span><br><span class="line"><span class="type">int</span> a[N], s[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> n;</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++) <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;a[i]);</span><br><span class="line">    <span class="type">int</span> res = <span class="number">0</span>;</span><br><span class="line">    <span class="comment">//核心代码</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>, j = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">    &#123;	<span class="comment">//开辟一个新的数组用于判断是否含有重复元素</span></span><br><span class="line">        s[a[i]] ++;		<span class="comment">//记录i位置上元素的个数	</span></span><br><span class="line">        <span class="keyword">while</span>(j &lt;= i &amp;&amp; s[a[i]] &gt; <span class="number">1</span>)	<span class="comment">//其中的j &lt;= i 此题可以省略，当j = i时s[a[i]] = 0</span></span><br><span class="line">        &#123;								<span class="comment">//条件不成立</span></span><br><span class="line">            s[a[j]]--;		<span class="comment">//j向前移动原来位置上的值的出现次数需要减1</span></span><br><span class="line">            j++;</span><br><span class="line">        &#125;</span><br><span class="line">        res = <span class="built_in">max</span>(res, i - j + <span class="number">1</span>);	<span class="comment">//更新res</span></span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; res &lt;&lt; endl;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="位运算">位运算</h4>
+<h5 id="x在二进制中的第k位数">x在二进制中的第k位数</h5>
+<p><strong>模板代码</strong></p>
+<ul>
+<li>res = (x &gt;&gt; k) &amp; 1
+先将k位置上的数移动到最后一位，然后将结果位与上1即为答案</li>
+</ul>
+<h5 id="lowbit">lowbit</h5>
+<p><strong>作用</strong></p>
+<ul>
+<li>求二进制数的最后一个1的位置</li>
+</ul>
+<p><strong>代码模板</strong></p>
+<ul>
+<li>x &amp; -x</li>
+</ul>
+<p><strong>例题</strong></p>
+<ul>
+<li>统计二进制数 x 中1的个数</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">lowbit</span><span class="params">(<span class="type">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x &amp; (-x);		<span class="comment">//返回值为X的二进制表达式中最低位的1所对应的值</span></span><br><span class="line">&#125;							<span class="comment">//例如lowbit(8)的返回值就是00001000</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> x, res = <span class="number">0</span>;</span><br><span class="line">    cin &gt;&gt; x;</span><br><span class="line">    <span class="comment">//找到x最后一个1的位置的时候就将其减去，直到x所有位置都被遍历</span></span><br><span class="line">    <span class="keyword">while</span>(x) x -= <span class="built_in">lowbit</span>(x), res++;		<span class="comment">//-=的操作相当于把x的最后一位1去掉变成0</span></span><br><span class="line">    cout &lt;&lt; res &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="只出现一次的数字"><strong>只出现一次的数字</strong></h5>
+<p><a
+target="_blank" rel="noopener" href="https://leetcode.cn/problems/single-number/">原题链接</a></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//利用了异或运算的特性，0与任何一个数异或结果都是该数本身，任何数与其本身异或结果都是0</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">singleNumber</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> res = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">auto</span> &amp;x : nums) res ^= x;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h5 id="只出现一次的数字ii">只出现一次的数字II</h5>
+<p><a
+target="_blank" rel="noopener" href="https://leetcode.cn/problems/single-number-ii/">原题链接</a></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//解法一：利用位运算的性质，对于数组中所有元素统计第i位(i&lt;32)位上的数的异或和，如果该异或和是三的倍数，则表示这个只出现过一次的数的第i位为0，如果不是三的倍数，则该数的第i位为1</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">singleNumber</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> res = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">32</span>; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="type">int</span> cnt = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">auto</span> &amp;e : nums)</span><br><span class="line">                cnt += (e &gt;&gt; i &amp; <span class="number">1</span>);</span><br><span class="line">            <span class="keyword">if</span>(cnt % <span class="number">3</span>)</span><br><span class="line">                res |= (<span class="number">1</span> &lt;&lt; i);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">//解法二：涉及数字电路设计的知识，可背下来当做模板</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">singleNumber</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> a = <span class="number">0</span>, b = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">auto</span> &amp;e : nums)</span><br><span class="line">        &#123;</span><br><span class="line">            a = (a ^ e) &amp; ~b;</span><br><span class="line">            b = (b ^ e) &amp; ~a;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> a;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">//解法三：用哈希表当然可以解决，只不过效率么...</span></span><br></pre></td></tr></table></figure>
+<h4 id="离散化">离散化</h4>
+<p><strong>本质</strong></p>
+<ul>
+<li>一种映射关系</li>
+</ul>
+<p><strong>适用场景</strong></p>
+<ul>
+<li>当数据的范围很大，但是数据的集中程度很低时（数据很稀疏）</li>
+</ul>
+<p><strong>过程</strong></p>
+<ul>
+<li><p>先将数据进行去重和排序（C++的标准操作）</p>
+<ul>
+<li>sort(alls.begin( ), alls.end( ))</li>
+<li>alls.erase(unique(alls.begin( ), alls.end( )), alls.end( ))</li>
+</ul></li>
+<li><p>可以将数据存放至数组中，将其真实的值映射成数组的下标索引</p></li>
+<li><p>根据真实值找到映射的索引值（利用二分进行查找）</p></li>
+</ul>
+<h4 id="区间合并">区间合并</h4>
+<p><strong>内容</strong></p>
+<ul>
+<li>若两个区间有交集，则将其合并为一个区间（取并集）;若没有交集则不做操作处理</li>
+</ul>
+<p><strong>代码实现</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">merge</span><span class="params">(vector&lt;PII&gt; &amp;segs)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    vector&lt;PII&gt; res;</span><br><span class="line">    <span class="type">int</span> st = <span class="number">-2e9</span>, ed = <span class="number">-2e9</span>;		<span class="comment">//设定区间端点的边界</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">auto</span> seg : segs)		<span class="comment">//segs表示所有区间</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(ed &lt; seg.first)		<span class="comment">//ed &lt; seg.first 表示两个区间没有交集</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(ed != <span class="number">-2e9</span>) res.<span class="built_in">push_back</span>(&#123;st, ed&#125;);	<span class="comment">//if语句排除第一个区间，把上一个区间插入到res中	</span></span><br><span class="line">            <span class="comment">//两个区间没有交集，则更新维护的区间</span></span><br><span class="line">            st = seg.first;		</span><br><span class="line">            ed = seg.second;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//else有两种情况，一种是两个区间相等；另一种是两个区间有交集，且右端点大于ed</span></span><br><span class="line">        <span class="keyword">else</span> ed = <span class="built_in">max</span>(ed, seg.second);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//if语句防止segs中只有一个元素时误判；当segs中只剩最后一个区间时，直接将其添加到答案容器res中</span></span><br><span class="line">    <span class="keyword">if</span>(st != <span class="number">-2e9</span>) res.<span class="built_in">push_back</span>(&#123;st, ed&#125;);</span><br><span class="line">    segs = res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="回溯算法">回溯算法</h4>
+<p><strong>思路</strong></p>
+<ul>
+<li>它的一般思路是尝试在每一步选择一个元素或者不选择元素，直到找到合适的结果或者已经枚举完所有的可能性。在这个过程中，如果发现当前选择会导致后续无法得到可行解，就会回溯到之前的状态，重新做选择，继续探索其他可能性。</li>
+</ul>
+<p><strong>性质</strong></p>
+<ul>
+<li>深度优先搜索：回溯算法采用的是深度优先搜索的策略，即选定一个方向走到底，再返回上一层，继续搜索其他方向</li>
+<li>逐步构建解：在回溯算法中，每一层递归都会添加或删除一个元素，逐步构建可行解</li>
+<li>剪枝优化：在回溯算法中，可以通过剪枝操作来减少搜索空间，提高算法效率。比如，在组合问题中，如果当前已经选了
+k 个数，还需要选 n - k 个数，但是数组中只剩下 m
+个数可选，此时就可以直接退出循环，因为不可能选够 n - k 个数了</li>
+</ul>
+<p><strong>例题</strong></p>
+<ol type="1">
+<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/permutations/">全排列</a>
+:给一个不包含重复元素数组，返回其全排列</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/permutations-ii/">全排列II</a>
+:给一个可包含重复元素数组，返回其全排列</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/path-sum-ii/">路径总和II</a>
+:一道二叉树的遍历，求路径</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/combinations/">组合</a>
+:给定两个整数n和k，返回范围[1, n]中所有可能的k个数的组合 :
+返回的每一个片段长度是一样的，都是k</li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/subsets/">子集</a>
+:经典的一道回溯算法题目，返回给定数组的所有子集，返回的每一个片段的长度是不一样的</li>
+<li><a
+target="_blank" rel="noopener" href="https://leetcode.cn/problems/generate-parentheses/">括号生成</a>
+:对于待插入的值有先后的要求的回溯:
+优先插入左括号，当数组中右括号的数量严格小于左括号的时候才可以插入右括号</li>
+</ol>
+<p><strong>算法模板</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">dfs</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> start)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//x表示当前seg中元素的个数</span></span><br><span class="line">    <span class="keyword">if</span>(特定条件 通常为 x == n)</span><br><span class="line">    &#123;</span><br><span class="line">   		res.<span class="built_in">emplace_back</span>(seg);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = start; i &lt; n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        seg.<span class="built_in">emplace_back</span>(nums[i]);</span><br><span class="line">    	<span class="built_in">dfs</span>(x + <span class="number">1</span>, i);    </span><br><span class="line">        seg.<span class="built_in">pop_back</span>();		<span class="comment">//操作都是对称的，这样才能实现回溯，最终seg是为空的</span></span><br><span class="line">	&#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>求子集的模板</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="type">int</span> n;</span><br><span class="line">    vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; res;</span><br><span class="line">    vector&lt;<span class="type">int</span>&gt; seg;</span><br><span class="line">    vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; <span class="built_in">subsets</span>(vector&lt;<span class="type">int</span>&gt;&amp; nums) &#123;</span><br><span class="line">        n = nums.<span class="built_in">size</span>();</span><br><span class="line">        <span class="built_in">dfs</span>(<span class="number">0</span>, nums);</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">dfs</span><span class="params">(<span class="type">int</span> start, vector&lt;<span class="type">int</span>&gt;&amp; nums)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        res.<span class="built_in">emplace_back</span>(seg);</span><br><span class="line">        <span class="keyword">if</span>(start == n) <span class="keyword">return</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = start; i &lt; n; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            seg.<span class="built_in">emplace_back</span>(nums[i]);</span><br><span class="line">            <span class="built_in">dfs</span>(i+<span class="number">1</span>, nums);</span><br><span class="line">            seg.<span class="built_in">pop_back</span>();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/" rel="tag"># 基础算法</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/a4ce31d2/" rel="prev" title="贪心算法">
+                  <i class="fa fa-angle-left"></i> 贪心算法
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/79666db/" rel="next" title="数据结构">
+                  数据结构 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2023</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">subersnt</span>
+  </div>
+
+    </div>
+  </footer>
+
+  
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>

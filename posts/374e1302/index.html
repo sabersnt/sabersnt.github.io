@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/saber-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/saber-16x16.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha256-CTSx/A06dm1B063156EVh15m6Y67pAjZZaQc89LLSrU=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.18.2","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"在这里输入你要搜索的内容","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="质数、约数、欧拉函数、快速幂、扩展欧几里得算法、高斯消元、求组合数、卡特兰数、容斥原理、博弈论">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数学知识">
+<meta property="og:url" content="http://example.com/posts/374e1302/index.html">
+<meta property="og:site_name" content="Alcatraz Island">
+<meta property="og:description" content="质数、约数、欧拉函数、快速幂、扩展欧几里得算法、高斯消元、求组合数、卡特兰数、容斥原理、博弈论">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/images/Catalan%E6%95%B0%E7%9A%84%E8%AF%81%E6%98%8E%E5%9B%BE%E8%A7%A3.jpg">
+<meta property="article:published_time" content="2023-11-05T14:13:54.434Z">
+<meta property="article:modified_time" content="2023-11-05T14:24:30.622Z">
+<meta property="article:author" content="subersnt">
+<meta property="article:tag" content="数学知识">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/images/Catalan%E6%95%B0%E7%9A%84%E8%AF%81%E6%98%8E%E5%9B%BE%E8%A7%A3.jpg">
+
+
+<link rel="canonical" href="http://example.com/posts/374e1302/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/posts/374e1302/","path":"posts/374e1302/","title":"数学知识"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>数学知识 | Alcatraz Island</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Alcatraz Island</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="在这里输入你要搜索的内容" spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%B4%A8%E6%95%B0"><span class="nav-text">质数</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%AF%95%E9%99%A4%E6%B3%95%E5%88%A4%E6%96%AD%E8%B4%A8%E6%95%B0"><span class="nav-text">试除法判断质数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%88%86%E8%A7%A3%E8%B4%A8%E5%9B%A0%E6%95%B0"><span class="nav-text">分解质因数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%B4%A8%E6%95%B0%E7%9A%84%E5%88%A4%E5%AE%9A"><span class="nav-text">质数的判定</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E6%9C%B4%E7%B4%A0%E7%AD%9B%E6%B3%95"><span class="nav-text">朴素筛法</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%9F%83%E6%B0%8F%E7%AD%9B%E6%B3%95"><span class="nav-text">埃氏筛法</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E6%AC%A7%E6%8B%89%E7%AD%9B%E6%B3%95%E7%BA%BF%E6%80%A7%E7%AD%9B%E6%B3%95"><span class="nav-text">欧拉筛法（线性筛法）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BA%A6%E6%95%B0"><span class="nav-text">约数</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%AF%95%E9%99%A4%E6%B3%95%E6%B1%82%E7%BA%A6%E6%95%B0"><span class="nav-text">试除法求约数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%BA%A6%E6%95%B0%E4%B8%AA%E6%95%B0"><span class="nav-text">约数个数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%BA%A6%E6%95%B0%E4%B9%8B%E5%92%8C"><span class="nav-text">约数之和</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%9C%80%E5%A4%A7%E5%85%AC%E7%BA%A6%E6%95%B0"><span class="nav-text">最大公约数</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%AC%A7%E6%8B%89%E5%87%BD%E6%95%B0"><span class="nav-text">欧拉函数</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89%E6%B3%95%E6%B1%82%E6%AC%A7%E6%8B%89%E5%87%BD%E6%95%B0"><span class="nav-text">定义法求欧拉函数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%AD%9B%E6%B3%95%E6%B1%82%E6%AC%A7%E6%8B%89%E5%87%BD%E6%95%B0"><span class="nav-text">筛法求欧拉函数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%AC%A7%E6%8B%89%E5%AE%9A%E7%90%86"><span class="nav-text">欧拉定理</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%B4%B9%E9%A9%AC%E5%B0%8F%E5%AE%9A%E7%90%86"><span class="nav-text">费马小定理</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BF%AB%E9%80%9F%E5%B9%82"><span class="nav-text">快速幂</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%BF%AB%E9%80%9F%E5%B9%82%E6%B1%82%E9%80%86%E5%85%83"><span class="nav-text">快速幂求逆元</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%89%A9%E5%B1%95%E6%AC%A7%E5%87%A0%E9%87%8C%E5%BE%97%E7%AE%97%E6%B3%95"><span class="nav-text">扩展欧几里得算法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%BA%BF%E6%80%A7%E5%90%8C%E4%BD%99%E6%96%B9%E7%A8%8B"><span class="nav-text">线性同余方程</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%AB%98%E6%96%AF%E6%B6%88%E5%85%83"><span class="nav-text">高斯消元</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%AB%98%E6%96%AF%E6%B6%88%E5%85%83%E8%A7%A3%E5%BC%82%E6%88%96%E7%BA%BF%E6%80%A7%E6%96%B9%E7%A8%8B%E7%BB%84"><span class="nav-text">高斯消元解异或线性方程组</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B1%82%E7%BB%84%E5%90%88%E6%95%B0"><span class="nav-text">求组合数</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%9F%A5%E8%A1%A8%E6%B3%95"><span class="nav-text">查表法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%A2%84%E5%A4%84%E7%90%86%E6%B3%95"><span class="nav-text">预处理法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%8D%A2%E5%8D%A1%E6%96%AF%E5%AE%9A%E7%90%86"><span class="nav-text">卢卡斯定理</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%88%86%E8%A7%A3%E8%B4%A8%E5%9B%A0%E5%AD%90"><span class="nav-text">分解质因子</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8D%A1%E7%89%B9%E5%85%B0%E6%95%B0"><span class="nav-text">卡特兰数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%B9%E6%96%A5%E5%8E%9F%E7%90%86"><span class="nav-text">容斥原理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8D%9A%E5%BC%88%E8%AE%BA"><span class="nav-text">博弈论</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#nim%E6%B8%B8%E6%88%8F"><span class="nav-text">nim游戏</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%8F%B0%E9%98%B6nim%E6%B8%B8%E6%88%8F"><span class="nav-text">台阶nim游戏</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#sg%E5%87%BD%E6%95%B0%E4%BB%A5%E5%8F%8Asg%E5%AE%9A%E7%90%86"><span class="nav-text">sg函数以及sg定理</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%9B%86%E5%90%88nim%E6%B8%B8%E6%88%8F"><span class="nav-text">集合nim游戏</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%8B%86%E5%88%86nim%E6%B8%B8%E6%88%8F"><span class="nav-text">拆分nim游戏</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="subersnt"
+      src="/images/ygyt.png">
+  <p class="site-author-name" itemprop="name">subersnt</p>
+  <div class="site-description" itemprop="description">莫听穿林打叶声，何妨吟啸且徐行</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="返回顶部">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/posts/374e1302/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/ygyt.png">
+      <meta itemprop="name" content="subersnt">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Alcatraz Island">
+      <meta itemprop="description" content="莫听穿林打叶声，何妨吟啸且徐行">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="数学知识 | Alcatraz Island">
+      <meta itemprop="description" content="质数、约数、欧拉函数、快速幂、扩展欧几里得算法、高斯消元、求组合数、卡特兰数、容斥原理、博弈论">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          数学知识
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2023-11-05 22:13:54 / 修改时间：22:24:30" itemprop="dateCreated datePublished" datetime="2023-11-05T22:13:54+08:00">2023-11-05</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">数据结构与算法</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">质数、约数、欧拉函数、快速幂、扩展欧几里得算法、高斯消元、求组合数、卡特兰数、容斥原理、博弈论</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h4 id="质数">质数</h4>
+<h5 id="试除法判断质数">试除法判断质数</h5>
+<ul>
+<li>无需遍历至n-1，只需要遍历到sqrt(n)即可</li>
+<li>时间复杂度：O(sqrt(n))</li>
+<li>循环一定执行根号n次</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">bool</span> <span class="title">is_prime</span><span class="params">(<span class="type">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(x &lt; <span class="number">2</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">2</span>; i &lt;= x / i; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(x % i == <span class="number">0</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="分解质因数">分解质因数</h5>
+<ul>
+<li>时间复杂度最坏的情况：O(sqrt(n))</li>
+<li>循环不一定执行根号n次</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">div</span><span class="params">(<span class="type">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">2</span>; i &lt;= x / i; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(x % i == <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="type">int</span> s = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">while</span>(x % i == <span class="number">0</span>) x /= i, s++;</span><br><span class="line">            cout &lt;&lt; i &lt;&lt; <span class="string">&#x27; &#x27;</span> &lt;&lt; s &lt;&lt; endl;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(x &gt; <span class="number">1</span>) cout &lt;&lt; x &lt;&lt; <span class="string">&#x27; &#x27;</span> &lt;&lt; <span class="number">1</span> &lt;&lt; endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="质数的判定">质数的判定</h5>
+<h6 id="朴素筛法">朴素筛法</h6>
+<ul>
+<li>用每一个数取筛掉它的倍数</li>
+<li>时间复杂度：O(n * log(n))</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">1e6</span> + <span class="number">10</span>;</span><br><span class="line"><span class="type">bool</span> st[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">filter</span><span class="params">(<span class="type">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> cnt = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">2</span>; i &lt;= n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(!st[i]) cnt++;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j = i + i; j &lt;= n; j += i)</span><br><span class="line">            st[j] = <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h6 id="埃氏筛法">埃氏筛法</h6>
+<ul>
+<li>只用质数作筛选</li>
+<li>时间复杂度：O(n * log (log( n ) ) )</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//判断1~n中有多少个质数</span></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">1e6</span> + <span class="number">10</span>;</span><br><span class="line"><span class="type">bool</span> st[N];	<span class="comment">//true表示不是质数，false表示为质数</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">esift</span><span class="params">(<span class="type">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> cnt = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">2</span>; i &lt;= n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(st[i]) <span class="keyword">continue</span>;</span><br><span class="line">        cnt++:</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j = i + i; j &lt;= n; j += i)</span><br><span class="line">            st[j] = <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> cnt;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h6 id="欧拉筛法线性筛法">欧拉筛法（线性筛法）</h6>
+<ul>
+<li>作用与埃氏算法一致</li>
+<li>时间复杂度：O( n )</li>
+<li>之所以被称为线性是因为该算法保证了每个数只会被筛选一次：即每次用这个数的最小质因子进行筛选</li>
+<li>每个数的最小质因子只有一个，所以每个数只会被筛选一次</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//判断1~n中有多少个质数</span></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">1e6</span> + <span class="number">10</span>;</span><br><span class="line"><span class="type">bool</span> st[N];	<span class="comment">//st为1表示不为质数，为0表示为质数</span></span><br><span class="line"><span class="type">int</span> primes[N], cnt;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">osift</span><span class="params">(<span class="type">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> cnt = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">2</span>; i &lt;= n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(!st[i]) primes[cnt++] = i;	<span class="comment">//如果i为质数则加入质数数组中</span></span><br><span class="line">        <span class="comment">//对和数进行筛选</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">0</span>; primes[j] &lt;= n / i; j++)	<span class="comment">//primes[j] &lt;= n 等价于 i * primes[j] &lt;= n，待删除的数不能超过n</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">//注意：质数数组中的数字是从大到小的</span></span><br><span class="line">            st[primes[j] * i] = <span class="literal">true</span>;	<span class="comment">//1.如果primes[j]不为i的最小质因数，但其一定为primes[j] * i 的最小质因数，可以删除</span></span><br><span class="line">            <span class="comment">//如果primes[j]是i的最小质因数，则必须退出循环，否则在下一次删除的过程中就不是靠最小质因数来删除了</span></span><br><span class="line">            <span class="comment">//假设没结束，则标记 primes[j + 1] * i 为true 但i已经有了最小质因数primes[j]了，因此必须退出循环</span></span><br><span class="line">            <span class="comment">//不退出循环的话，只会重复筛选</span></span><br><span class="line">            <span class="keyword">if</span>(i % primes[j] == <span class="number">0</span>) <span class="keyword">break</span>;	</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> cnt;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="约数">约数</h4>
+<p><strong>概念</strong></p>
+<ul>
+<li>能将其整除的除数（分母），包括其本身</li>
+</ul>
+<h5 id="试除法求约数">试除法求约数</h5>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">divise</span><span class="params">(<span class="type">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    vector&lt;<span class="type">int</span>&gt; d;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt;= x / i; i++)	<span class="comment">//i表示x可能的约数，其中只需要枚举小于根号x的i即可，因为约数是成对存在的</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(x % i == <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            d.<span class="built_in">push_back</span>(i);</span><br><span class="line">            <span class="keyword">if</span>(i != x / i) d.<span class="built_in">push_back</span>(x / i);	<span class="comment">//插入大于根号x的除数，但要注意判重</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">sort</span>(d.<span class="built_in">begin</span>(), d.<span class="built_in">end</span>());	<span class="comment">//从小到大排序</span></span><br><span class="line">    <span class="keyword">return</span> d;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="约数个数">约数个数</h5>
+<p><strong>题目</strong></p>
+<ul>
+<li>给定 n 个数，求其相乘后得到的数的约数个数，结果对 1e9 + 7 取模</li>
+</ul>
+<p><strong>思路</strong></p>
+<ul>
+<li><p>首先我们需要得到相乘后的数的 质数的分解因式：a1<sup>p1</sup> *
+a2<sup>p2</sup> * ... * an<sup>pn</sup></p></li>
+<li><p>则其约数个数为：(p1 + 1) * (p2 + 1) * ... * (pn + 1)</p></li>
+<li><p>任何一个数都可以被分解质因数相乘的形式，其约数就是按照这因式进行全排列</p></li>
+<li><p><strong>全排列的个数就是所有因数的个数</strong></p></li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">unordered_map&lt;<span class="type">int</span>, <span class="type">int</span>&gt; primes;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> mod = <span class="number">1e9</span> + <span class="number">7</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//整个while循环就是在做一件事，将最后相乘得到的结果进行质因数的分解，first = a表示底数，second = p表示指数</span></span><br><span class="line"><span class="keyword">while</span>(n--)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> x;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;x);</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">2</span>; i &lt;= x / i; i++)	<span class="comment">//分解质因数的模板</span></span><br><span class="line">    	<span class="keyword">while</span>(x % i == <span class="number">0</span>) x /= i, primes[i]++;</span><br><span class="line">    <span class="keyword">if</span>(x &gt; <span class="number">1</span>) primes[x]++;	<span class="comment">//插入大于根号x的质因数</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">long</span> <span class="type">long</span> res = <span class="number">1</span>;	<span class="comment">//res表示最终结果的约数个数</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">auto</span> p : primes) res = res * (p.second + <span class="number">1</span>) % mod;	<span class="comment">//套入公式，根据取模运算的性质，可以先对中间结果取模</span></span><br><span class="line">cout &lt;&lt; res &lt;&lt; endl;</span><br></pre></td></tr></table></figure>
+<h5 id="约数之和">约数之和</h5>
+<p><strong>题目</strong></p>
+<ul>
+<li>给定 n 个数，求其相乘后得到的数的约数之和，结果对 1e9 + 7 取模</li>
+</ul>
+<p><strong>思路</strong></p>
+<ul>
+<li>首先我们需要得到相乘后的数的 质数的分解因式：a1<sup>p1</sup> *
+a2<sup>p2</sup> * ... * an<sup>pn</sup></li>
+<li>其约数之和为：(a<sub>1</sub><sup>0</sup> + a<sub>1</sub><sup>1</sup>
++ ... a<sub>1</sub><sup>p1</sup>) * ( a<sub>2</sub><sup>0</sup> +
+a<sub>2</sub><sup>2</sup> + ... a<sub>2</sub><sup>p2</sup>) * ... *
+(a<sub>n</sub><sup>0</sup> + a<sub>n</sub><sup>1</sup> + ...
+a<sub>n</sub><sup>pn</sup>)</li>
+<li>证明：任意数的约数为其质数分解因式的全排列，将所有约数相加后提取公因式就可以得到上述公式</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">unordered_map&lt;<span class="type">int</span>, <span class="type">int</span>&gt; primes;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> mod = <span class="number">1e9</span> + <span class="number">7</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//首先我们还是需要得到最终数的质数分解因式</span></span><br><span class="line"><span class="keyword">while</span>(n--)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> x;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;x);</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">2</span>; i &lt;= x / i; i++)	<span class="comment">//分解质因数的模板</span></span><br><span class="line">    	<span class="keyword">while</span>(x % i == <span class="number">0</span>) x /= i, primes[i]++;</span><br><span class="line">    <span class="keyword">if</span>(x &gt; <span class="number">1</span>) primes[x]++;	<span class="comment">//插入大于根号x的质因数</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">long</span> <span class="type">long</span> res = <span class="number">1</span>;</span><br><span class="line"><span class="comment">//求约数之和的过程</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">auto</span> e : primes) </span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">long</span> <span class="type">long</span> t = <span class="number">1</span>;</span><br><span class="line">    <span class="type">int</span> a = e.first, p = e.second;</span><br><span class="line">    <span class="keyword">while</span>(p--) t = (t * a + <span class="number">1</span>) % mod;	<span class="comment">//求a的0次方加到a的p次方的简化写法，+1是这里最有灵魂的地方</span></span><br><span class="line">    res = res * t % mod;	<span class="comment">//同上，先对中间乘数求模不影响最终结果</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">cout &lt;&lt; res &lt;&lt; endl;</span><br></pre></td></tr></table></figure>
+<h5 id="最大公约数">最大公约数</h5>
+<p><strong>思路</strong></p>
+<ul>
+<li>欧几里得算法：辗转相除法</li>
+<li>算法核心：gcd(a, b) = gcd(b, a % b)</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//gcd函数返回a与b的最大公约数</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">gcd</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> b ? <span class="built_in">gcd</span>(b,a % b) : a;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="欧拉函数">欧拉函数</h4>
+<p><strong>定义</strong></p>
+<ul>
+<li><p>记 φ(x) 为欧拉函数，表示 1~x 中与 x 互质的数的个数</p></li>
+<li><p>求 φ(x) 的公式：φ(x) = x * (1 - 1 / p<sub>1</sub>) * (1 - 1 /
+p<sub>2</sub>) * ... * (1 - 1 / p<sub>n</sub>)</p></li>
+<li><p>其中 p<sub>1</sub>, p<sub>2</sub>, ... ,
+p<sub>n</sub>表示x的所有质因数</p></li>
+<li><p>证明：利用互斥原理证明</p></li>
+</ul>
+<h5 id="定义法求欧拉函数">定义法求欧拉函数</h5>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//返回x对应的欧拉函数的值</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">get_ora</span><span class="params">(<span class="type">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> res = x;</span><br><span class="line">    <span class="comment">//分解质因数的模板</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">2</span>; i &lt;= x / i; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(x % i== <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            res = res / i * (i - <span class="number">1</span>);	<span class="comment">//注意需要先作除法后作乘法，因为在运算过程中可能会爆int</span></span><br><span class="line">            <span class="keyword">while</span>(x % i == <span class="number">0</span>) x /= i;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//大于根号x的质因数也要算入其中</span></span><br><span class="line">    <span class="keyword">if</span>(x &gt; <span class="number">1</span>) res = res / x * (x - <span class="number">1</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="筛法求欧拉函数">筛法求欧拉函数</h5>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">1e6</span> + <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="type">long</span> <span class="type">long</span> LL;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> phi[N], primes[N], cnt;	<span class="comment">//phi[]表示欧拉函数</span></span><br><span class="line"><span class="type">bool</span> st[N];</span><br><span class="line"></span><br><span class="line"><span class="comment">//在之前的欧拉筛质数时，我们发现欧拉筛的过程中可以得到每个数的质因子，可以利用这一性质求欧拉函数</span></span><br><span class="line"><span class="comment">//对于求 1~n 中每个数的欧拉函数有效</span></span><br><span class="line"><span class="function">LL <span class="title">ora</span><span class="params">(<span class="type">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    phi[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">2</span>; i &lt;= n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(!st[i])	</span><br><span class="line">        &#123;</span><br><span class="line">            primes[cnt++] = i;</span><br><span class="line">            phi[i] = i - <span class="number">1</span>;	<span class="comment">//如果i为质数，则i的欧拉值为 i - 1</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//进行筛选</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">0</span>; primes[j] &lt;= n / i; j++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="type">int</span> t = i * primes[j];	<span class="comment">//为了方便阅读，现将其用t表示，无其他特殊含义</span></span><br><span class="line">            st[t] = <span class="literal">true</span>;</span><br><span class="line">            <span class="keyword">if</span>(i % primes[j] == <span class="number">0</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                phi[t] = phi[i] * primes[j];	<span class="comment">//如果pj是i的质因数，则phi[t]只是在原来的基础上乘上了个pj而已</span></span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//如果pj不是i的质因数，则ph[t] 相对于phi[i]只是在phi[i]的基础上乘了[pj * (1 - 1 / pj)] 即 (primes[j] - 1)</span></span><br><span class="line">            phi[t] = phi[i] * (primes[j] - <span class="number">1</span>);	<span class="comment">//不能先写到前面，因为需要先判断pj是否为i的质因数	</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    LL res = <span class="number">0</span>;</span><br><span class="line">    <span class="comment">//对所有数的欧拉值求和</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++) res += phi[i];</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="欧拉定理">欧拉定理</h5>
+<p><strong>内容</strong></p>
+<ul>
+<li><p><span class="math inline">\(a ^ {\phi(m)} \equiv 1\
+mod(m)\)</span></p></li>
+<li><p>其中 <span class="math inline">\(a、m \in N^+\)</span></p></li>
+</ul>
+<h5 id="费马小定理">费马小定理</h5>
+<p><strong>内容</strong></p>
+<ul>
+<li><p>欧拉定理的特例：当m为质数时，<span class="math inline">\(\phi(m)
+= m - 1\)</span></p></li>
+<li><p><span class="math inline">\(a^{m-1} \equiv 1\
+mod(m)\)</span></p></li>
+</ul>
+<h4 id="快速幂">快速幂</h4>
+<p><strong>概念</strong></p>
+<ul>
+<li><p>快速幂算法用来求 <span class="math inline">\(a^k \ \% \
+p\)</span></p></li>
+<li><p>时间复杂度：O(logn)</p></li>
+<li><p>就是先求 <span class="math inline">\(a^{2^0}、a^{2^1}...\
+a^{2^n}\)</span>，这些数相乘就会得到 <span
+class="math inline">\(a^{2^0+2^1+\ ...\ +2^n}\)</span></p></li>
+<li><p>通过凑配让 k = 2<sup>0</sup>+ 2<sup>1</sup>+ 2<sup>2</sup>+ ... +
+2<sup>n</sup> ，可以发现1,2...n就是k的用二进制表示的数</p></li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="type">long</span> <span class="type">long</span> LL;</span><br><span class="line"></span><br><span class="line"><span class="function">LL <span class="title">qmi</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> k, <span class="type">int</span> p)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    LL res = <span class="number">1</span>;	<span class="comment">//起初res = 1;</span></span><br><span class="line">    <span class="keyword">while</span>(k)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//如果k的二进制数最后一位是1则乘上a</span></span><br><span class="line">        <span class="keyword">if</span>(k &amp; <span class="number">1</span>) res = (LL)res * a % p;</span><br><span class="line">        k &gt;&gt;= <span class="number">1</span>;</span><br><span class="line">        <span class="comment">//a现在表示的是当移动到k的二进制的第i位时，a的(2^i)次方，此数每次必须更新，你可以不用，但我必须更新</span></span><br><span class="line">        a = (LL)a * a % p;	<span class="comment">//每次需要将i加1，即对a进行平方</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="快速幂求逆元">快速幂求逆元</h5>
+<p><strong>逆元的概念</strong></p>
+<ul>
+<li>若 <span class="math inline">\(gcd(a,p)=1\)</span>，则一定存在一个数
+x 使得 <span class="math inline">\(ax\equiv1\ mod(p)\)</span>，则记x为 a
+模 p 的一个乘法逆元</li>
+<li>由费马小定理知：<span class="math inline">\(p\)</span> 为质数时，有
+<span class="math inline">\(a^NaN\equiv1\
+mod(p)\)</span></li>
+<li>因此，<span class="math inline">\(a^{p-2}\)</span>
+为x的一个解，转换成了快速幂的问题</li>
+<li>因为题目要求 x &lt;= p - 1，所以需要模上一个p，就构成了 <span
+class="math inline">\(qmi(a,p-2,p)\)</span> 的参数</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="type">long</span> <span class="type">long</span> LL;</span><br><span class="line"></span><br><span class="line"><span class="function">LL <span class="title">qmi</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> k, <span class="type">int</span> p)</span>		<span class="comment">//快速幂的模板</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    LL res = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(k)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(k &amp; <span class="number">1</span>) res = (LL)res * a % p;</span><br><span class="line">        k &gt;&gt;= <span class="number">1</span>;</span><br><span class="line">        a = (LL)a * a % p;	<span class="comment">//可以不用，但不能不更新</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> n;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;n);</span><br><span class="line">    <span class="keyword">while</span>(n--)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> a, p;	<span class="comment">//a即为上文概念中的b，p即为模数m</span></span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>, &amp;a, &amp;p);		<span class="comment">//快速幂求逆元的前提是a，p互质</span></span><br><span class="line">        LL res = <span class="built_in">qmi</span>(a, p - <span class="number">2</span>, p);	<span class="comment">//qmi求的是 a ^ (p - 2) % p，有费马小定理可以推出</span></span><br><span class="line">        <span class="keyword">if</span>(a % p == <span class="number">0</span>)	<span class="comment">//如果a是p的倍数，则永远不可能存在a的乘数逆元</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">puts</span>(<span class="string">&quot;impossible&quot;</span>);</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%lld\n&quot;</span>, res);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="扩展欧几里得算法">扩展欧几里得算法</h4>
+<p><strong>背景</strong></p>
+<ul>
+<li><p>对于任意一对正整数 <span class="math inline">\((a,b)\)</span>
+一定存在一组<span class="math inline">\((x,y)\)</span> 使得 <span
+class="math inline">\(ax+b×y=gcd(a,b)\)</span></p></li>
+<li><p>利用欧几里得算法可以求解，因为<span
+class="math inline">\(gcd(a,b)=gcd(b,a\%b)\)</span></p></li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">exgcd</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b, <span class="type">int</span>&amp; x, <span class="type">int</span>&amp; y)</span>	<span class="comment">//注意传的是引用</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(!b)</span><br><span class="line">    &#123;</span><br><span class="line">        x = <span class="number">1</span>, y = <span class="number">0</span>;	<span class="comment">//当b=0时，满足a * x + 0 = a 的一组解为 (1,0)</span></span><br><span class="line">        <span class="keyword">return</span> a;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> x1, <span class="type">int</span> x2;	<span class="comment">//x1, x2表示递归下一级的系数</span></span><br><span class="line">        <span class="type">int</span> d = <span class="built_in">exgcd</span>(b, a%b, x1, x2);</span><br><span class="line">        <span class="comment">//上一级的系数与下一级的系数的关系，可以推导 (b, a % b) =&gt; b*x1 + (a - [a/b] * b)y1</span></span><br><span class="line">        <span class="comment">//ax + by = ay1 + b(x1 - [a/b]*y1) =&gt; x = y1, y = x1 - (a/b) * y1;</span></span><br><span class="line">        x = y1, y = x1 - (a / b) * y1;</span><br><span class="line">        <span class="keyword">return</span> d;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="线性同余方程">线性同余方程</h5>
+<p><strong>概念</strong></p>
+<ul>
+<li><p>求解同余方程的解：<span class="math inline">\(a\times x\equiv b\
+(mod\ m)\)</span></p></li>
+<li><p>上式等价于 <span class="math inline">\(a\times x=km+b\)</span>
+等价于 <span class="math inline">\(a\times x\ +k&#39;m=b\
+①\)</span></p></li>
+<li><p>有拓展欧几里得原理拓算法可知一定存在 <span
+class="math inline">\(a\times x+m\times y = gcd(a,m)\)</span></p></li>
+<li><p>将上式两边同乘 b 再除以 gcd( a, m ) 可以得到 ①
+式，前提是b必须为gcd(a, m)的倍数</p></li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="type">long</span> <span class="type">long</span> LL;</span><br><span class="line"><span class="keyword">while</span>(n--)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> a, m, p;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d%d%d&quot;</span>, &amp;a, &amp;b, &amp;m);</span><br><span class="line">    <span class="type">int</span> x, y;</span><br><span class="line">    <span class="type">int</span> d = <span class="built_in">exgcd</span>(a, b, x, y);</span><br><span class="line">    <span class="comment">//如果b不是d的倍数，则表示无解</span></span><br><span class="line">    <span class="keyword">if</span>(b % d) <span class="built_in">puts</span>(<span class="string">&quot;impossible&quot;</span>);		</span><br><span class="line">    <span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, (LL)x * b / d % m);	<span class="comment">//此题我们只关心x，不需要用到y，x再乘b除以d模m即为最终答案</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="高斯消元">高斯消元</h4>
+<p><strong>用途</strong></p>
+<ul>
+<li>求解n元一次方程组</li>
+</ul>
+<p><strong>方法</strong></p>
+<ul>
+<li>枚举矩阵的每一列</li>
+<li>找出所有行中当前列的位置上绝对值最大的行</li>
+<li>将找到的行中的所有的数换到当前的最上一行</li>
+<li>将当前最高的一行的当前列的位置上的数变成1</li>
+<li>将当前行下面所有行的当前列的数变成0</li>
+<li>从最后一行开始，将所有解往上带</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cmath&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">110</span>;	</span><br><span class="line"><span class="type">const</span> <span class="type">double</span> eps = <span class="number">1e-8</span>;	<span class="comment">//用于判断double是否为0，如果其绝对值小于eps则认为其为0</span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> n;</span><br><span class="line"><span class="type">double</span> a[N][N];	<span class="comment">//用于存放矩阵，a[x][n]表示最终答案</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">gause</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> c, r;	<span class="comment">//! r表示遍历到了哪一行，c表示遍历到了哪一列</span></span><br><span class="line">    <span class="keyword">for</span>(c = <span class="number">0</span>, r = <span class="number">0</span>; c &lt; n; c++)	<span class="comment">//从每一列开始枚举</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> t = r;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = r; i &lt; n; i++)	<span class="comment">//找到第c列上的数绝对值最大的行</span></span><br><span class="line">            <span class="keyword">if</span>(<span class="built_in">fabs</span>(a[t][c]) &lt; <span class="built_in">fabs</span>(a[i][c]))	<span class="comment">//fabs用于计算浮点数类型的绝对值</span></span><br><span class="line">                t = i;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">fabs</span>(a[t][c]) &lt; eps) <span class="keyword">continue</span>;	<span class="comment">//如果最大值都是0，则说明整一列都是0，直接跳到r行c+1列</span></span><br><span class="line">           </span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = c; i &lt;= n; i++) <span class="built_in">swap</span>(a[r][i], a[t][i]);	<span class="comment">//找到的t行与r行交换</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = n; i &gt;= c; i--) a[r][i] /= a[r][c];	<span class="comment">//r行的第c列变成1，必须从后往前更新，因为后面的更新需要用到a[r][c]的值</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = r + <span class="number">1</span>; i &lt; n; i++)	<span class="comment">//将r下面的所有行的c列变成0，整列同时减去a[r][j] * a[i][c]</span></span><br><span class="line">            <span class="keyword">if</span>(<span class="built_in">fabs</span>(a[i][c]) &gt; eps)		<span class="comment">//如果已经是0则没必要更新</span></span><br><span class="line">                <span class="keyword">for</span>(<span class="type">int</span> j = n; j &gt;= c; j--) a[i][j] -= a[r][j] * a[i][c];	<span class="comment">//还是必须从后往前更新，理由同上</span></span><br><span class="line">        r++;	<span class="comment">//当前行处理完毕，进行下一行的处理</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span>(r &lt; n)	<span class="comment">//r &lt; n说明三角形中的行数小于n</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = r; i &lt; n; i++)	<span class="comment">//此时r以及下面的行的左边全为0，如果其中的某一行右边不为0，则表示无解</span></span><br><span class="line">            <span class="keyword">if</span>(<span class="built_in">fabs</span>(a[i][n]) &gt; eps)</span><br><span class="line">                <span class="keyword">return</span> <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;	<span class="comment">//否则有多组解</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//往回带的过程，因为我们将最终结果储存在a[x][n]中，所有只需要对a[x][n]进行更新，其他的我们不关心</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = n - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--)		<span class="comment">//需要把第i行的非xi的项消掉，利用其下一行可以进行相加减</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j = i + <span class="number">1</span>; j &lt; n; j++)	<span class="comment">//j表示i的下一行，i从n开始往前遍历</span></span><br><span class="line">            a[i][n] -= a[i][j] * a[j][n];	<span class="comment">//a[i][n]是由a[j][n]相加减得到的</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;	<span class="comment">//表示有唯一的解：一个完美的倒三角型</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;n);</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">0</span>; j &lt; n + <span class="number">1</span>; j++)</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">&quot;%lf&quot;</span>, &amp;a[i][j]);</span><br><span class="line">    </span><br><span class="line">    <span class="type">int</span> t = <span class="built_in">gause</span>();</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span>(t == <span class="number">2</span>) <span class="built_in">puts</span>(<span class="string">&quot;No solution&quot;</span>);</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(t == <span class="number">1</span>) <span class="built_in">puts</span>(<span class="string">&quot;Infinite group solutions&quot;</span>);</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;%.2lf\n&quot;</span>, a[i][n]);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="高斯消元解异或线性方程组">高斯消元解异或线性方程组</h5>
+<p><strong>方法</strong></p>
+<ul>
+<li>方法和普通版本相同</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//题目特性：方程所有系数、常数、未知数的可能取到的值只有0或1</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">110</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> n;</span><br><span class="line"><span class="type">int</span> a[N][N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">gauss</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> c, r;</span><br><span class="line">    <span class="keyword">for</span>(c = r = <span class="number">0</span>; c &lt; n; c++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> t = r;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = r; i &lt; n; i++)	<span class="comment">//我们只需要找到c列为1的行就行了，因为0和1之间的最大值只能是1</span></span><br><span class="line">            <span class="keyword">if</span>(a[i][c])</span><br><span class="line">            &#123;</span><br><span class="line">                t = i;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">        <span class="keyword">if</span>(!a[t][c]) <span class="keyword">continue</span>;	<span class="comment">//c列全为0时直接跳至c+1行</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt;= n; i++) <span class="built_in">swap</span>(a[t][i], a[r][i]);	<span class="comment">//交换至最上一行</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = r + <span class="number">1</span>; i &lt; n; i++)</span><br><span class="line">            <span class="keyword">if</span>(a[i][c])</span><br><span class="line">                <span class="keyword">for</span>(<span class="type">int</span> j = c; j &lt;= n; j++)</span><br><span class="line">                    a[i][j] ^= a[r][j];	<span class="comment">//由于只有0或1两个数，所以这里的^相当于减法了</span></span><br><span class="line">        </span><br><span class="line">        r++;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span>(r &lt; n)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = r; i &lt; n; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(a[i][n]) <span class="keyword">return</span> <span class="number">2</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = n - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--)</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j = i + <span class="number">1</span>; j &lt; n; j++)</span><br><span class="line">            a[i][n] ^= a[j][n] * a[i][j];	<span class="comment">//可以使用*也可以使用&amp;，此题是等价的</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;n);</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">0</span>; j &lt; n + <span class="number">1</span>; j++)</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;a[i][j]);</span><br><span class="line">    </span><br><span class="line">    <span class="type">int</span> t = <span class="built_in">gauss</span>();</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span>(t == <span class="number">2</span>) <span class="built_in">puts</span>(<span class="string">&quot;No solution&quot;</span>);</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(t == <span class="number">1</span>) <span class="built_in">puts</span>(<span class="string">&quot;Multiple sets of solutions&quot;</span>);</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, a[i][n]);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="求组合数">求组合数</h4>
+<p><strong>模板</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">C</span><span class="params">(<span class="type">int</span> n, <span class="type">int</span> k)</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (k &gt; n) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> res = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; k; i++) &#123;</span><br><span class="line">        res *= n - i;</span><br><span class="line">        res /= i + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>题目</strong></p>
+<ul>
+<li><span class="math inline">\(给定\ a,b\ 求C_a^b\ mod\
+(p)的值\)</span></li>
+<li><span class="math inline">\(a,b,p\ 都有范围限制\)</span></li>
+</ul>
+<h5 id="查表法">查表法</h5>
+<p><strong>范围</strong></p>
+<ul>
+<li>a, b 的范围较小，例如2000</li>
+<li>时间复杂度：O ( n<sup>2</sup> )</li>
+<li>核心公式：<span class="math inline">\(C_a^b\ =C_{a-1}^{b-1}\ +\
+C_{a-1}^b\)</span> 值可以分为两部分：选 k 或 不选
+k，<strong>不选</strong> k：<span
+class="math inline">\(C_{a-1}^b\)</span> ，选 k：<span
+class="math inline">\(C_{a-1}^{b-1}\)</span></li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="comment">//N由a,b能取到的最大值来决定</span></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">2010</span>, mod = <span class="number">1e9</span> + <span class="number">7</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> c[N][N];	<span class="comment">//表示Cab	</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">init</span><span class="params">()</span>		<span class="comment">//建表的过程</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; N; i++)</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">0</span>; j &lt;= i; j++)</span><br><span class="line">            <span class="keyword">if</span>(!j) c[i][j] = <span class="number">1</span>;	</span><br><span class="line">            <span class="keyword">else</span> c[i][j] = (c[i - <span class="number">1</span>][j - <span class="number">1</span>] + c[i - <span class="number">1</span>][j]) % mod;	<span class="comment">//核心公式</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">init</span>();</span><br><span class="line">    <span class="type">int</span> n;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;n);</span><br><span class="line">    <span class="keyword">while</span>(n--)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> a, b;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>, &amp;a, &amp;b);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, c[a][b]);	<span class="comment">//直接查表就行</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="预处理法">预处理法</h5>
+<p><strong>范围</strong></p>
+<ul>
+<li>a, b的范围较大，为 10<sup>5</sup></li>
+</ul>
+<p><strong>思路</strong></p>
+<ul>
+<li>预处理出 1 ~ n 中所有数的正元和逆元</li>
+<li>核心公式：<span class="math inline">\((k!)^{-1}\equiv
+(k!)^{p-2}\equiv [(k-1)!]^{p-2}\times k^{p-2}\equiv [(k-1)!]^{-1}\times
+k^{-1}\ mod(p)\)</span></li>
+<li>即 k的阶乘的逆元可以由 (k - 1)的阶乘的逆元得到</li>
+<li>最后套入公式 <span class="math inline">\(C_a^b=a!\ /\
+(b!\times(a-b)!)\)</span></li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="type">long</span> <span class="type">long</span> LL;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">100010</span>, mod = <span class="number">1e9</span> + <span class="number">7</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> fact[N], infact[N];	<span class="comment">//fanct为正元数组，infact为逆元数组 fact(n)表示n的阶乘</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">qmi</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> k, <span class="type">int</span> p)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> res = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(k)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(k &amp; <span class="number">1</span>) res = (LL)res * a % p;</span><br><span class="line">        a = (LL)a * a % p;</span><br><span class="line">        k &gt;&gt;= <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">init</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    fact[<span class="number">0</span>] = infact[<span class="number">0</span>] = <span class="number">1</span>;	<span class="comment">//0的正逆元都为1</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt; N; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        fact[i] = (LL)fact[i - <span class="number">1</span>] * i % mod;	<span class="comment">//正逆元都可以由 n-1的正逆元得到</span></span><br><span class="line">        infact[i] = (LL)infact[i - <span class="number">1</span>] * <span class="built_in">qmi</span>(i, mod - <span class="number">2</span>, mod) % mod;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">init</span>();</span><br><span class="line">    <span class="type">int</span> n;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;n);</span><br><span class="line">    <span class="keyword">while</span>(n--)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> a, b;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>, &amp;a, &amp;b);</span><br><span class="line">        <span class="comment">//最后代入公式即可</span></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, (LL)fact[a] * infact[a - b] % mod * infact[b] % mod);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="卢卡斯定理">卢卡斯定理</h5>
+<p><strong>内容</strong></p>
+<ul>
+<li>对于质数 p， a , b 为正整数有 <span
+class="math inline">\(C_a^b=C_{a\%p}^{b\%p}\ \times
+C_{[a/p]}^{[b/p]}\)</span></li>
+<li>题目数据范围：<span class="math inline">\(0&lt;a,b\le10^{18},\
+0&lt;p\le10^5\)</span></li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//a,b范围超级大，但是p的范围比较小</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="type">long</span> <span class="type">long</span> LL;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">qmi</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> k, <span class="type">int</span> p)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> res = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(k)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(k &amp; <span class="number">1</span>) res = (LL)res * a % p;</span><br><span class="line">        a = (LL)a * a % p;</span><br><span class="line">        k &gt;&gt;= <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">C</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b, <span class="type">int</span> p)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(a &lt; b) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="type">int</span> res = <span class="number">1</span>;</span><br><span class="line">    <span class="comment">//这里模拟的就是 a! / (b! * (a - b)!)，和我现实中运算一致hh</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>, j = a; i &lt;= b; i++, j--)</span><br><span class="line">    &#123;</span><br><span class="line">        res = (LL)res * j % p;</span><br><span class="line">        res = (LL)res * <span class="built_in">qmi</span>(i, p - <span class="number">2</span>, p) % p;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">lucas</span><span class="params">(LL a, LL b, <span class="type">int</span> p)</span>	<span class="comment">//注意a，b可能非常大，会爆int，必须用LL来存</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(a &lt; p &amp;&amp; b &lt; p) <span class="keyword">return</span> <span class="built_in">C</span>(a, b, p);	<span class="comment">//当a &lt; p并且b &lt; p时，又卢卡斯定理公式可知，值就为 Cab</span></span><br><span class="line">    <span class="keyword">return</span> (LL)<span class="built_in">C</span>(a % p, b % p, p) * <span class="built_in">lucas</span>(a / p, b / p, p) % p; 	<span class="comment">// a / p可能还是比较大，所以继续使用卢卡斯</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> n;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;n);</span><br><span class="line">    <span class="keyword">while</span>(n--)</span><br><span class="line">    &#123;</span><br><span class="line">        LL a, b;	<span class="comment">//注意a，b可能非常大，会爆int，必须用LL来存</span></span><br><span class="line">        <span class="type">int</span> p;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%ld%ld%d&quot;</span>, &amp;a, &amp;b, &amp;p);	<span class="comment">//LL的打印格式为 %ld</span></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, <span class="built_in">lucas</span>(a, b, p));</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="分解质因子">分解质因子</h5>
+<p><strong>范围</strong></p>
+<ul>
+<li>题目不再要求结果模上一个数</li>
+<li><span class="math inline">\(0&lt;a,b\le5000\)</span></li>
+<li>需要使用高精度乘法</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="type">long</span> <span class="type">long</span> LL;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">5010</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> primes[N], sum[N], cnt;</span><br><span class="line"><span class="type">bool</span> st[N];</span><br><span class="line"></span><br><span class="line"><span class="comment">//欧拉筛模板</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">get_primes</span><span class="params">(<span class="type">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">2</span>; i &lt;= n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(!st[i]) primes[cnt++] = i;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">0</span>; primes[j] &lt;= n / i; j++)</span><br><span class="line">        &#123;</span><br><span class="line">            st[primes[j] * i] = <span class="literal">true</span>;</span><br><span class="line">            <span class="keyword">if</span>(i % primes[j] == <span class="number">0</span>) <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">get</span><span class="params">(<span class="type">int</span> n, <span class="type">int</span> p)</span>	<span class="comment">//get函数用于获取n!中含有多少个质数p</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> res = <span class="number">0</span>;<span class="comment">//思路：我们只需要知道阶乘中的最大的一个数(n)，用其先找p的倍数，接着找p方的倍数、p三方倍数 ... </span></span><br><span class="line">    <span class="keyword">while</span>(n)	<span class="comment">//在找p的倍数时，p方倍数也算进去了(但只算了一次)，但由于是p方所依还要加上一个p，即再加上所有p方的倍数的个数，以此类推</span></span><br><span class="line">    &#123;			<span class="comment">//求n中p的倍数公式：cnt = n / p</span></span><br><span class="line">        res += n / p;</span><br><span class="line">        n /= p;	<span class="comment">//分子除以p，就相当于分母乘上p了hh</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//高精度乘法模板，此题不需要除去前导零</span></span><br><span class="line"><span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">mul</span><span class="params">(vector&lt;<span class="type">int</span>&gt; a, <span class="type">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    vector&lt;<span class="type">int</span>&gt; c;</span><br><span class="line">    <span class="type">int</span> t = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; a.<span class="built_in">size</span>(); i++)</span><br><span class="line">    &#123;</span><br><span class="line">        t += a[i] * b;</span><br><span class="line">        c.<span class="built_in">push_back</span>(t % <span class="number">10</span>);</span><br><span class="line">        t /= <span class="number">10</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(t)</span><br><span class="line">    &#123;</span><br><span class="line">        c.<span class="built_in">push_back</span>(t % <span class="number">10</span>);</span><br><span class="line">        t /= <span class="number">10</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> c;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> a, b;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>, &amp;a, &amp;b);</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">get_primes</span>(a);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; cnt; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> p = primes[i];</span><br><span class="line">        sum[i] = <span class="built_in">get</span>(a, p) - <span class="built_in">get</span>(b, p) - <span class="built_in">get</span>(a - b, p);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    vector&lt;<span class="type">int</span>&gt; res;</span><br><span class="line">    res.<span class="built_in">push_back</span>(<span class="number">1</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; cnt; i++)</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">0</span>; j &lt; sum[i]; j++)</span><br><span class="line">            res = <span class="built_in">mul</span>(res, primes[i]);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = res.<span class="built_in">size</span>() - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) <span class="built_in">printf</span>(<span class="string">&quot;%d&quot;</span>, res[i]);</span><br><span class="line">    <span class="built_in">puts</span>(<span class="string">&quot;&quot;</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="卡特兰数">卡特兰数</h4>
+<p><strong>定义</strong></p>
+<ul>
+<li><p>是一个数列，类似斐波那契数列的那种具有规律和实际意义的数列。
+<span class="math display">\[
+  通项公式:A(n)=C_{2n}^{n}-C_{2n}^{n+1}= \frac{C_{2n}^{n}}{n+1}
+  \newline递推公式:A(n)=\frac{4n-2}{n+1}A(n-1),其中a_1=1
+  \]</span></p></li>
+<li></li>
+</ul>
+<p><strong>问题切入</strong></p>
+<ul>
+<li>在nxn的网格中，一开始在(0,0)处，每次可以向上走一格或者向右走一格，在任一时刻，向右走的次数不能少于向上走的次数，问有多少种合法路径?</li>
+<li>两姐妹配合洗5个碗，姐姐洗碗，妹妹将碗放入橱柜，问一共有多少种配合方式
+<ul>
+<li>分析：妹妹能够放碗的前提是姐姐已经洗好碗，即任一时刻，妹妹摞碗的个数不能小于等于姐姐洗碗的个数</li>
+</ul></li>
+<li>以上问题的个数就是卡特兰数</li>
+</ul>
+<p><a
+target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/97619085">这篇文章解释得很清楚</a></p>
+<p><strong>证明图解</strong></p>
+<p><img src="/images/Catalan数的证明图解.jpg" /></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//题目：满足条件的01序列</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> mod = <span class="number">1e9</span> + <span class="number">7</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="type">long</span> <span class="type">long</span> LL;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">qmi</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> k, <span class="type">int</span> p)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> res = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(k)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(k &amp; <span class="number">1</span>) res = (LL)res * a % p;</span><br><span class="line">        a = (LL)a * a % p;</span><br><span class="line">        k &gt;&gt;= <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//用于计算Cab的</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">C</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> res = <span class="number">1</span>;</span><br><span class="line">    <span class="comment">//模拟现实中的计算</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>, j = a; i &lt;= b; i++, j--)</span><br><span class="line">    &#123;</span><br><span class="line">        res = (LL)res * j % mod;</span><br><span class="line">        res = (LL)res * <span class="built_in">qmi</span>(i, mod - <span class="number">2</span>, mod) % mod;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> n;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;n);</span><br><span class="line">    <span class="type">int</span> a = n * <span class="number">2</span>, b = n;</span><br><span class="line">    <span class="comment">//最后套入公式即可，中间结果可能爆int，所以需要临时强转成LL</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, (LL)<span class="built_in">C</span>(a, b) * <span class="built_in">qmi</span>(n + <span class="number">1</span>, mod - <span class="number">2</span>, mod) % mod);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="容斥原理">容斥原理</h4>
+<p><strong>内容</strong></p>
+<ul>
+<li><p><span class="math inline">\(设S(A)为集合A中元素个数，求S(A\cup
+B\cup C)\)</span></p></li>
+<li><p><span class="math inline">\(先求S(A)+S(B)+S(C)再减S(A\cap
+B)减S(A\cap C)减S(B\cap C)最后加上S(A\cap B\cap C)\)</span></p></li>
+<li><p>通俗化就是
+(奇数个集合)的交集相加，(偶数个集合)的交集相减</p></li>
+<li><p>组合数的一个恒等式：<span
+class="math inline">\(C_n^1+C_n^2+C_n^3\dots+C_n^n=2^n\)</span></p></li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//能被整除的数的个数</span></span><br><span class="line"><span class="comment">//给定n和一组质数p 求1~n中至少能被一个p整除的数的个数</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="type">long</span> <span class="type">long</span> LL;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">20</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> p[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> n, m;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>, &amp;n, &amp;m);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//读取质数</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; m; i++) <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;p[i]);</span><br><span class="line">    </span><br><span class="line">    <span class="type">int</span> res = <span class="number">0</span>;	<span class="comment">//答案</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">//由于一共有2^m个项(由恒等式可知)，恰好可以用二进制来表示</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt; <span class="number">1</span> &lt;&lt; m; i++)	<span class="comment">//枚举1 到 11111...1111(m个1) 之间的数，1表示选该集合，0表示不选</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> t = <span class="number">1</span>, s = <span class="number">0</span>;	<span class="comment">//t为所有质数的最小公倍数，s表示是选奇数个集合还是选偶数个集合</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">0</span>; j &lt; m; j++)	<span class="comment">//枚举所有质数</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(i &gt;&gt; j &amp; <span class="number">1</span>)	<span class="comment">//表示选第j个集合(第j位上是1)</span></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span>((LL)t * p[j] &gt; n)</span><br><span class="line">                &#123;</span><br><span class="line">                    t = <span class="number">-1</span>;	<span class="comment">//超过了最大值则不用再选了，n / t，t大于n时一定为0</span></span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                t *= p[j];	<span class="comment">//质数相乘</span></span><br><span class="line">                s++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(t != <span class="number">-1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(s &amp; <span class="number">1</span>) res += n / t;	<span class="comment">//奇数相加，n/p表示能够同时被多个质数整除的质数</span></span><br><span class="line">            <span class="keyword">else</span> res -= n / t;	<span class="comment">//偶数相减</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, res);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="博弈论">博弈论</h4>
+<h5 id="nim游戏">nim游戏</h5>
+<p><strong>题目</strong></p>
+<ul>
+<li><p>给定 n
+堆石子，两位玩家轮流操作，每次操作可以从任意一堆石子中拿走任意数量的石子（可以拿完，但不能不拿），最后无法进行操作的人视为失败。问如果两人都采用最优策略，先手是否必胜。</p></li>
+<li><p>前提：两个人都聪明绝顶，不存在失误策略</p></li>
+</ul>
+<p><strong>策略</strong></p>
+<ul>
+<li>对每堆石子的数量进行异或操作，最终结果如果是0则先手必败，非0则先手必胜</li>
+<li>最终状态：a1 ^ a2 ^ ... ^ an = 0</li>
+<li>若 a1 ^ a2 ^ ... ^ an = x (!0)，则一定可以从ai中取出 (ai - ai ^ x)
+使得 新的异或序列为0 (交给后手)</li>
+<li>若 a1 ^ a2 ^ ... ^ an = 0
+则无论从哪一堆操作，都会使新的异或序列的结果不为0 (交给先手)</li>
+<li>先手如何获胜：前提是最开始的状态异或结果不为0，第一次拿出 (ai - ai ^
+x)
+个石子使得异或结果为0，接下来只要看后手拿了多少个，先手再拿出多少个，最后先手一定获胜</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> n;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;n);</span><br><span class="line">    <span class="type">int</span> res = <span class="number">0</span>;	<span class="comment">//为什么res初始化为0：因为任意一个数与0异或都为其本身</span></span><br><span class="line">    <span class="keyword">while</span>(n--)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> a;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;a);</span><br><span class="line">        res ^= a;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(res) <span class="built_in">puts</span>(<span class="string">&quot;Yes&quot;</span>);</span><br><span class="line">    <span class="keyword">else</span> <span class="built_in">puts</span>(<span class="string">&quot;No&quot;</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="台阶nim游戏">台阶nim游戏</h5>
+<p><strong>题目</strong></p>
+<ul>
+<li>现在，有一个 n 级台阶的楼梯，每级台阶上都有若干个石子，其中第 i
+级台阶上有 ai
+个石子(i≥1)。两位玩家轮流操作，每次操作可以从任意一级台阶上拿若干个石子放到下一级台阶中（不能不拿）。已经拿到地面上的石子不能再拿，最后无法进行操作的人视为失败。问如果两人都采用最优策略，先手是否必胜。</li>
+</ul>
+<p><strong>特性</strong></p>
+<ul>
+<li>本题只需关注奇数阶梯上的石子个数，偶数阶梯上的不需要关注</li>
+<li>因为当其中一个人拿了奇数的石子往偶数上放，另一个人也可以再将其放回至下一个奇数阶梯</li>
+<li>如果奇数阶梯上的石子数的异或不为0则先手必胜；为0则后手必胜</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//重要的是思想</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> n;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;n);</span><br><span class="line">    <span class="type">int</span> res = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> a;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;a);</span><br><span class="line">        <span class="keyword">if</span>(i % <span class="number">2</span>) res ^= a;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(res) <span class="built_in">puts</span>(<span class="string">&quot;Yes&quot;</span>);</span><br><span class="line">    <span class="keyword">else</span> <span class="built_in">puts</span>(<span class="string">&quot;No&quot;</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="sg函数以及sg定理">sg函数以及sg定理</h5>
+<p><strong>定义</strong></p>
+<ul>
+<li><span class="math inline">\(假设x状态能到\
+y1,y2,y3\dots状态,则有sg(x)=mex\{sg(y1),sg(y2),sg(y3)\dots\}\)</span></li>
+<li><span
+class="math inline">\(mex表示一种运算:结果为不包含于集合的最小自然数\)</span></li>
+</ul>
+<p><strong>性质</strong></p>
+<ul>
+<li><span
+class="math inline">\(sg(x)=0表示,x状态不能转移到0的状态\)</span></li>
+<li><span class="math inline">\(sg(x)=0\ 表示先手必败，sg(x)\ne0\
+表示先手必胜\)</span></li>
+</ul>
+<p><strong>sg定理</strong></p>
+<ul>
+<li><p>对于一个组合游戏，可以把游戏分成多个规则统一的局面，分治计算 sg
+值。则总的 sg 值是各个分治局面的 sg 值的异或和</p></li>
+<li><p><span class="math inline">\(sg(G)=sg(G1)\oplus
+g(G2)\oplus\dots\oplus sg(Gn),\ \oplus表示异或运算符\)</span></p></li>
+</ul>
+<p><strong>固定的模板</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">sg</span><span class="params">(<span class="type">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    &#123;	<span class="comment">//拓展x下一个状态</span></span><br><span class="line">    	<span class="comment">//用unordered_set记录所有x的下一个状态的sg值 </span></span><br><span class="line">    &#125;</span><br><span class="line">    &#123;</span><br><span class="line">     	<span class="comment">//对x的下一个状态进行，mex操作最终得到x的sg值</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> res = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">while</span>(n--)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> a;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;a);</span><br><span class="line">    res ^= <span class="built_in">sg</span>(a);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span>(res) <span class="built_in">puts</span>(<span class="string">&quot;Yes&quot;</span>);</span><br><span class="line"><span class="keyword">else</span> <span class="built_in">puts</span>(<span class="string">&quot;No&quot;</span>);</span><br></pre></td></tr></table></figure>
+<h5 id="集合nim游戏">集合nim游戏</h5>
+<p><strong>题目</strong></p>
+<ul>
+<li>每次能只能拿属于 S
+集合中的数的石子的个数，其余条件与经典nim游戏一致</li>
+<li>用sg函数可以轻松解决</li>
+<li>对于每一个石子堆，都会有一个完全状态图，每一个石子堆的sg值都可以求出来</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;unordered_set&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">110</span>, M = <span class="number">10010</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> n, m;</span><br><span class="line"><span class="type">int</span> s[N], f[M];	<span class="comment">//s存储的是可拿走石子的数量，f存储的是每堆石子的sg值</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">sg</span><span class="params">(<span class="type">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//记忆搜索法，保证每个数字只求一次，参数x表示，数量为x的石子堆</span></span><br><span class="line">    <span class="keyword">if</span>(f[x] != <span class="number">-1</span>) <span class="keyword">return</span> f[x];</span><br><span class="line">    </span><br><span class="line">    unordered_set&lt;<span class="type">int</span>&gt; S;	<span class="comment">//S用来存储每一个石子堆中所有状态的sg值</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; m; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//x小于s中所有的数，则表明已经走到末状态</span></span><br><span class="line">        <span class="comment">//否则存下(x - s[i])的sg值</span></span><br><span class="line">        <span class="keyword">if</span>(x &gt;= s[i]) S.<span class="built_in">insert</span>(<span class="built_in">sg</span>(x - s[i]));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; ;i++)	<span class="comment">//进行一个mex操作(范围是所有自然数)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(!S.<span class="built_in">count</span>(i))	<span class="comment">//因为是从小到大遍历，一旦S中没有i，则i就成为了当前x的sg值</span></span><br><span class="line">            <span class="keyword">return</span> f[x] = i;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;m);</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; m; i++) <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;s[i]);</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">memset</span>(f, <span class="number">-1</span>, <span class="keyword">sizeof</span> f);</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;n);</span><br><span class="line">    <span class="type">int</span> res = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(n--)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> a;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;a);</span><br><span class="line">        res ^= <span class="built_in">sg</span>(a);	<span class="comment">//对所有sg值进行异或操作</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span>(res) <span class="built_in">puts</span>(<span class="string">&quot;Yes&quot;</span>);</span><br><span class="line">    <span class="keyword">else</span> <span class="built_in">puts</span>(<span class="string">&quot;No&quot;</span>);</span><br><span class="line">        </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="拆分nim游戏">拆分nim游戏</h5>
+<p><strong>题目</strong></p>
+<ul>
+<li>每次拿走n堆石子中的一堆，然后放入两堆规模更小的石子堆，规模可以为0，新堆的总数可以大于原来的堆，不能操作的一方失败</li>
+<li>使用sg定理，求出n堆的sg值，最后进行一个异或和操作</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;unordered_set&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">110</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> n;</span><br><span class="line"><span class="type">int</span> f[N];	<span class="comment">//存储sg值</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">sg</span><span class="params">(<span class="type">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(f[x] != <span class="number">-1</span>) <span class="keyword">return</span> f[x];</span><br><span class="line">    </span><br><span class="line">    unordered_set&lt;<span class="type">int</span>&gt; S;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; x; i++)	<span class="comment">//放入新的两堆，所以两层循环</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">0</span>; j &lt;= i; j++)	<span class="comment">//为了避免重复，令 j&lt;=i</span></span><br><span class="line">            S.<span class="built_in">insert</span>(<span class="built_in">sg</span>(i) ^ <span class="built_in">sg</span>(j));	<span class="comment">//sg(i) ^ sg(j)的结果就是x的下一个状态的sg值</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; ;i++)	<span class="comment">//进行mex操作</span></span><br><span class="line">        <span class="keyword">if</span>(!S.<span class="built_in">count</span>(i))</span><br><span class="line">            <span class="keyword">return</span> f[x] = i;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;n);</span><br><span class="line">    <span class="type">int</span> res = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">memset</span>(f, <span class="number">-1</span>, <span class="keyword">sizeof</span> f);</span><br><span class="line">    <span class="keyword">while</span>(n--)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> a;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;a);</span><br><span class="line">        res ^= <span class="built_in">sg</span>(a);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span>(res) <span class="built_in">puts</span>(<span class="string">&quot;Yes&quot;</span>);</span><br><span class="line">    <span class="keyword">else</span> <span class="built_in">puts</span>(<span class="string">&quot;No&quot;</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%95%B0%E5%AD%A6%E7%9F%A5%E8%AF%86/" rel="tag"># 数学知识</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/79666db/" rel="prev" title="数据结构">
+                  <i class="fa fa-angle-left"></i> 数据结构
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/f7a7d551/" rel="next" title="搜索与图论">
+                  搜索与图论 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2023</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">subersnt</span>
+  </div>
+
+    </div>
+  </footer>
+
+  
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>
