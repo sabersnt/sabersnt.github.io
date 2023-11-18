@@ -2697,6 +2697,7 @@ body {
   background: url("../images/background.png");
   background-size: cover;
   background-attachment: fixed;
+  color: #333;
 }
 h1,
 h2,
@@ -2710,11 +2711,11 @@ strong {
   color: #333;
 }
 h4 {
-  font-size: 1.3em;
+  font-size: 1.25em;
+  color: #00a2e8;
 }
 h5 {
-  font-size: 1.2em;
-  color: #00a2e8;
+  font-size: 1.1em;
 }
 h6 {
   font-size: 1em;
@@ -2735,6 +2736,9 @@ h6 {
   font-size: 0.9em;
   color: #00f;
 }
+.post-body {
+  font-size: 16px;
+}
 .post-button a {
   color: #000;
 }
@@ -2742,4 +2746,8 @@ mark.search-keyword {
   background-color: #ff0;
   border-bottom: none;
   color: #ff2a2a;
+}
+.btn:hover {
+  color: #00f;
+  background: #fff;
 }
