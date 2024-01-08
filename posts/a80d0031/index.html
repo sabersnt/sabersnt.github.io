@@ -27,8 +27,8 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/images/dp%E6%80%9D%E8%B7%AF.png">
 <meta property="article:published_time" content="2023-11-05T14:41:14.509Z">
-<meta property="article:modified_time" content="2023-11-13T02:36:41.623Z">
-<meta property="article:author" content="saberwnt">
+<meta property="article:modified_time" content="2023-12-08T01:04:57.926Z">
+<meta property="article:author" content="sabersnt">
 <meta property="article:tag" content="动态规划">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://example.com/images/dp%E6%80%9D%E8%B7%AF.png">
@@ -146,9 +146,9 @@
 
         <div class="site-overview-wrap sidebar-panel">
           <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" alt="saberwnt"
+    <img class="site-author-image" itemprop="image" alt="sabersnt"
       src="/images/ygyt.png">
-  <p class="site-author-name" itemprop="name">saberwnt</p>
+  <p class="site-author-name" itemprop="name">sabersnt</p>
   <div class="site-description" itemprop="description">莫听穿林打叶声，何妨吟啸且徐行</div>
 </div>
 <div class="site-state-wrap animated">
@@ -201,7 +201,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/ygyt.png">
-      <meta itemprop="name" content="saberwnt">
+      <meta itemprop="name" content="sabersnt">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -233,7 +233,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-11-13 10:36:41" itemprop="dateModified" datetime="2023-11-13T10:36:41+08:00">2023-11-13</time>
+      <time title="修改时间：2023-12-08 09:04:57" itemprop="dateModified" datetime="2023-12-08T09:04:57+08:00">2023-12-08</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -275,9 +275,9 @@
 <li>因为，j - v[i] &lt; j，所以在到 f[j]之前 f [j - v[i]]
 已经被更新过了，但我们需要的是未更新之前的值</li>
 </ul>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//优化前的代码：二维数组</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">1010</span>;</span><br><span class="line"><span class="type">int</span> v[N], w[N];</span><br><span class="line"><span class="type">int</span> f[N][N];</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> n, m;</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; m;	</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++) cin &gt;&gt; v[i] &gt;&gt; w[i];</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">0</span>; j &lt;= m; j++)</span><br><span class="line">        &#123;</span><br><span class="line">            f[i][j] = f[i - <span class="number">1</span>][j];</span><br><span class="line">            <span class="keyword">if</span>(j &gt;= v[i]) f[i][j] = <span class="built_in">max</span>(f[i][j], f[i - <span class="number">1</span>][j - v[i]] + w[i]);</span><br><span class="line">        &#125;</span><br><span class="line">    cout &lt;&lt; f[n][m] &lt;&lt; endl;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//优化前的代码：二维数组</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">1010</span>;</span><br><span class="line"><span class="type">int</span> v[N], w[N];</span><br><span class="line"><span class="type">int</span> f[N][N];</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> n, m;</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; m;	</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++) cin &gt;&gt; v[i] &gt;&gt; w[i];</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">0</span>; j &lt;= m; j++)</span><br><span class="line">        &#123;</span><br><span class="line">            f[i][j] = f[i - <span class="number">1</span>][j];</span><br><span class="line">            <span class="keyword">if</span>(j &gt;= v[i]) </span><br><span class="line">                f[i][j] = <span class="built_in">max</span>(f[i][j], f[i - <span class="number">1</span>][j - v[i]] + w[i]);</span><br><span class="line">        &#125;</span><br><span class="line">    cout &lt;&lt; f[n][m] &lt;&lt; endl;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <hr />
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//优化后的代码：一维数组</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">1010</span>;</span><br><span class="line"><span class="type">int</span> v[N], w[N];</span><br><span class="line"><span class="type">int</span> f[N];</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> n, m;</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; m;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++) cin &gt;&gt; v[i] &gt;&gt; w[i];</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j = m; j &gt;= v[i]; j--)</span><br><span class="line">            f[j] = <span class="built_in">max</span>(f[j], f[j - v[i]] + w[i]);</span><br><span class="line">            </span><br><span class="line">    cout &lt;&lt; f[m] &lt;&lt; endl;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//优化后的代码：一维数组</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">1010</span>;</span><br><span class="line"><span class="type">int</span> v[N], w[N];</span><br><span class="line"><span class="type">int</span> f[N];</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> n, m;</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; m;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++) cin &gt;&gt; v[i] &gt;&gt; w[i];</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j = m; j &gt;= v[i]; j--)  <span class="comment">//注意是循环到v[i]就结束</span></span><br><span class="line">            f[j] = <span class="built_in">max</span>(f[j], f[j - v[i]] + w[i]);</span><br><span class="line">            </span><br><span class="line">    cout &lt;&lt; f[m] &lt;&lt; endl;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h5 id="完全背包问题">完全背包问题</h5>
 <p><strong>概述</strong></p>
 <ul>
@@ -654,12 +654,12 @@ Hi 给出，其中
     <div class="footer-inner">
 
   <div class="copyright">
-    &copy; 
-    <span itemprop="copyrightYear">2023</span>
+    &copy; 2023 – 
+    <span itemprop="copyrightYear">2024</span>
     <span class="with-love">
       <i class="fa fa-heart"></i>
     </span>
-    <span class="author" itemprop="copyrightHolder">saberwnt</span>
+    <span class="author" itemprop="copyrightHolder">sabersnt</span>
   </div>
 
     </div>
